@@ -1,3 +1,4 @@
+const  BASE_URL='https://rent-vista-7tlr.onrender.com'
 
 const getParams = () => {
   const param = new URLSearchParams(window.location.search).get("advertiseId");
