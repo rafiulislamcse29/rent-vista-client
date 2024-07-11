@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body{
+   font-family: "Open Sans", sans-serif;
+}
+.nav-container {
+  width: 95%;
+  margin:  0 auto;
+
+}
+
+.menu{
+  position: relative;
+  cursor: pointer;
+}
+.menu::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color:rgb(13, 110, 253);
+  transition: 0.5s ease-in-out;
+}
+.menu:hover::after{
+  width: 100%;
+}
+
+.banner{
+  padding: 5rem 5rem;
+}
+
+.banner-container{
+  height: 45vh;
+}
+
+/* filter rent category  */
+.dropdown-item:hover{
+  cursor: pointer;
+  background: #3333;
+}
+
+
+
+
+.card-title{
+  color: rgba(0, 126, 133, 1);
+}
+
+.nodata{
+  display: none;
+}
+
+.reviews-heading  h3{
+  font-size: 2.5rem;
+color: rgba(0, 126, 133, 1);
+}
+
+
+footer{
+  background: linear-gradient(rgb(28, 45, 199),
+  rgb(25, 35, 170),
+  rgb(61, 50, 158));
+}
+
+
+
