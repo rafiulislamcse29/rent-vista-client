@@ -1,4 +1,3 @@
-const  BASE_URL='https://rent-vista-7tlr.onrender.com'
 
 const getParams = () => {
   const param = new URLSearchParams(window.location.search).get("advertiseId");
@@ -16,7 +15,7 @@ const handleRequestRent = () => {
     return
   }
 
-  fetch(`http://127.0.0.1:8000/advertisement/rent_request/`, {
+  fetch(`https://rent-vista-7tlr.onrender.com/advertisement/rent_request/`, {
     method: "POST",
     headers: { 
       "content-type": "application/json",
@@ -42,7 +41,7 @@ const handleFavouriteRent=()=>{
     window.location.href = 'login.html'
     return
   }
-  fetch(`http://127.0.0.1:8000/advertisement/favourite/`, {
+  fetch(`https://rent-vista-7tlr.onrender.com/advertisement/favourite/`, {
     method: "POST",
     headers: { 
       "content-type": "application/json",
