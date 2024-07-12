@@ -1,6 +1,6 @@
 const  BASE_URL='https://rent-vista-7tlr.onrender.com'
 
-const token= localStorage.getItem('authToken')
+
 
 const handleRegistration = (event) => {
   event.preventDefault()
@@ -84,6 +84,7 @@ const handleLogin=(event)=>{
 
 
 const handlelogOut=()=>{
+  const token= localStorage.getItem('authToken')
   fetch(`${BASE_URL}/api/auth/logout/`, {
     headers: {
       "content-type": "application/json",
