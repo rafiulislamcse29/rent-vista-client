@@ -27,7 +27,7 @@
         <div id="navbar"></div>
 
         <!-- banner container -->
-        <div class="banner">
+        <div class="banner" >
             <div class="container banner-container  shadow-lg rounded border p-5  ">
                 <div class="row  align-items-center h-100">
                     <div class="col-md-8 d-flex flex-column gap-1">
@@ -58,31 +58,32 @@
 
         <!-- rent  sections -->
         <section class="">
-            <div class="container doctors-container">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-2">
-                        <h3>Filters Rent</h3>
-                        <!-- Example single danger button -->
-                        <div class="d-flex flex-column gap-2">
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-
+                    <div class="col-md-3">
+                          
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     Category
                                 </button>
-                                <ul id="drop-deg" class="dropdown-menu dropdown-menu-secondary"
-                                    aria-labelledby="dropdownMenuButton2">
-                                    <!--All  Categories   -->
-                                </ul>
+                              </h2>
+                              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body" id="accordion-body-container">
+                                    
+                                </div>
+                              </div>
                             </div>
-                        </div>
+                          
+                          </div>
                     </div>
-                    <div class="col-md-10 d-flex flex-column gap-3">
-                        <div id="advertisements" class="advertisement d-flex gap-3 flex-wrap">
+                    <div class="col-md-9 d-flex flex-column gap-3 border p-2 rounded align-items-center">
+                        <div id="advertisements" class="advertisement d-flex gap-5 flex-wrap">
                             <!-- advertisements lists -->
                         </div>
                         <div id="nodata" class="nodata">
-                            <img src="./Images/nodata.png" alt="nodata">
+                            <h4>Result not found. Please try again</h4>
                         </div>
                         <div id="spinner" class="spinner hidden text-center">
                             <img style="width: 150px; height: 150px;" src="./Images/loading.png" alt="">

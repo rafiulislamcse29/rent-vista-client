@@ -32,7 +32,7 @@ export function displayAdvertisements(advertisements) {
     .then(category => {
       
     div.innerHTML = `
-    <div class="card" style="width: 16rem;">
+    <div class="card" style="width: 18rem;">
        <a href="advertise_details.html?advertiseId=${advertise.id}">
          <img class="card-img-top" style="height: 12rem;" src="${advertise.image}" alt="Card image cap">
        </a>
@@ -60,13 +60,15 @@ export const loadCategory = () => {
     .then(res => res.json())
     .then(data => {
       data.forEach(item => {
-        const parentEl = document.getElementById('drop-deg')
+        const parentEl = document.getElementById('accordion-body-container')
         const li = document.createElement('li')
-        li.classList.add('dropdown-item')
+        li.style.cursor='pointer';
         li.textContent = item.name;
 
         li.addEventListener('click', () => loadAdvertisements(item.name));
+
         parentEl.appendChild(li)
+        
        })
     })
 }
