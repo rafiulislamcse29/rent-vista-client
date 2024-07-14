@@ -27,50 +27,31 @@
         <div id="navbar"></div>
     </header>
 
-    <main>
+    <div id="spinner" class="spinner hidden text-center">
+        <img style="width: 150px; height: 150px;" src="./Images/loading.png" alt="">
+    </div>
+
+    <main id="body">
+       
         <!-- advertisements  details sections -->
-        <section class="py-5 mt-5">
-            <div class="container advertisements-container">
+        <section class="py-5 mt-5" >
+            <div class="container advertisements-container border overflow-hidden">
                 <div class="advertise-details" id="advertise-details">
                     <!-- advertisement details  -->
 
                     <div id="nodata" class="nodata">
                         <img src="./Images/nodata.png" alt="nodata">
                     </div>
-                    <div id="spinner" class="spinner hidden text-center">
-                        <img style="width: 150px; height: 150px;" src="./Images/loading.png" alt="">
-                    </div>
+                   
                 </div>
 
             </div>
             </div>
         </section>
 
-        <!--show all reviews -->
-        <section class="py-5">
-            <div class="container reviews-container">
-                <div class="reviews-heading text-center d-flex flex-column gap-3">
-                    <h3>User Review us</h3>
-                </div>
-        <!-- reviews  -->
-        
-                <div id="review_container"
-                class="swiffy-slider slider-item-show4 slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-fadein slider-item-first-visible">
-                    <ul id="reviews" class="slider-container py-4">
 
-                    </ul>
-
-                    <button type="button" class="slider-nav" aria-label="Go left"></button>
-                    <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
-
-                    <div class="slider-indicators">
-                        <button class="active" aria-label="Go to slide"></button>
-                        <button aria-label="Go to slide" class=""></button>
-                        <button aria-label="Go to slide"></button>
-                        <button aria-label="Go to slide"></button>
-                        <button aria-label="Go to slide"></button>
-                    </div>
-                </div>
+        <section>
+            <div class="row container">
             </div>
         </section>
 
@@ -78,12 +59,12 @@
         <section class="py-5">
             <div class="container">
                 <h3 class="text-center">Please review</h3>
-                <form  id="review-form">
+                <form id="review-form">
                     <div class="form-group">
                         <label for="comment">Comment</label>
-                        <textarea class="form-control" name="comment" id="comment" placeholder="enter your comment" rows="3"
-                          required></textarea>
-                      </div>
+                        <textarea class="form-control" name="comment" id="comment" placeholder="enter your comment"
+                            rows="3" required></textarea>
+                    </div>
                     <div class="form-group">
                         <label for="rating">Rating</label>
                         <select class="form-control" id="rating">
@@ -94,8 +75,25 @@
                             <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
                         </select>
                     </div>
-                    <button  type="submit" class="mt-2 btn btn-primary">Submit</button>
+                    <button type="submit" class="mt-2 btn btn-primary">Submit</button>
                 </form>
+            </div>
+        </section>
+
+        <!--show all reviews -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <header class="section-heading">
+                            <h3>Users Reviews </h3>
+                        </header>
+                        <div class="d-flex flex-column gap-2" id="reviews-cart-container">
+                           <!-- show review -->
+                        </div>      
+                    </div> 
+                </div> 
             </div>
         </section>
 
@@ -118,7 +116,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
         defer></script>
-        
+
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
