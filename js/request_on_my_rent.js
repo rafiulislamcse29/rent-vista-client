@@ -12,7 +12,6 @@ const loadRequestOnMyRent = () => {
   })
     .then((res) => res.json())
     .then((data) => {
-
       if (data.length === 0) {
         document.getElementById('rent_request_table').innerHTML = 'Request On My Rent  not found';
       } else {
@@ -28,16 +27,20 @@ function displayRequestOnMyRent(rent_requests) {
   rent_requests.forEach((rent, i) => {
     const date = new Date(rent.created_at);
     const tr = document.createElement('tr');
-   
     fetch(`${BASE_URL}/advertisement/list/${rent.advertisement}/`)
       .then(res => res.json())
       .then(data => {
-        tr.innerHTML = `
+
+        fetch(`${BASE_URL}/users/${rent.requester}/`)
+          .then(res => res.json())
+          .then(user => {
+            tr.innerHTML = `
           <th scope="row">${i + 1}</th>
+          <td class='text-center '>${user.first_name} ${user.last_name}</td>
           <td>${data.title}</td>
           <td class='text-center '>${data.location}</td>
            <td class='text-center '>${data.price}</td>
-           <td class='text-center '>${rent.is_accepted? "Success" :'Pending'}</td>
+           <td class='text-center '>${rent.is_accepted ? "Success" : 'Pending'}</td>
           <td>${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}</td>
           <td class='text-center h4 d-flex gap-1'>
            <a href="#">
@@ -54,7 +57,10 @@ function displayRequestOnMyRent(rent_requests) {
            </a>
           </td>
     `;
-        tableBody.insertAdjacentElement('afterbegin', tr);
+            tableBody.insertAdjacentElement('afterbegin', tr);
+
+          })
+
       })
   });
 }
@@ -81,16 +87,16 @@ window.handleRequestOnMyRentDel = (id) => {
 
 
 
-window.handleRequestOnMyRentEdit = (id,is_accepted,adcreated_at,advertisement,requester) => {
-  
+window.handleRequestOnMyRentEdit = (id, is_accepted, adcreated_at, advertisement, requester) => {
+
   fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
       'Authorization': `Token ${token}`,
     },
-    body:JSON.stringify({
-      is_accepted:!is_accepted,
+    body: JSON.stringify({
+      is_accepted: !is_accepted,
       adcreated_at,
       advertisement,
       requester

@@ -21,7 +21,6 @@ const loadFavouriteRent = () => {
 };
 
 function displayFavoriteRent(favRents) {
-  console.log(favRents);
   const tableBody = document.getElementById('table-body');
   tableBody.innerHTML = '';
   favRents.forEach((fav, i) => {

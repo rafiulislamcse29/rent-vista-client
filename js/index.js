@@ -34,7 +34,7 @@ export function displayAdvertisements(advertisements) {
     div.innerHTML = `
     <div class="card" style="width: 18rem;">
        <a href="advertise_details.html?advertiseId=${advertise.id}">
-         <img class="card-img-top" style="height: 12rem;" src="${advertise.image}" alt="Card image cap">
+         <img class="card-img-top" style="height: 12rem;" src="${advertise.image}" alt="${advertise.title}">
        </a>
        <div class="card-body">
          <h5 class="card-title">${advertise.title.slice(0, 30)}...</h5>
@@ -66,7 +66,7 @@ export const loadCategory = () => {
         li.textContent = item.name;
 
         li.addEventListener('click', () => loadAdvertisements(item.name));
-
+        
         parentEl.appendChild(li)
         
        })

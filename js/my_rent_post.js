@@ -3,11 +3,17 @@ const userId = localStorage.getItem('userId');
 const token = localStorage.getItem('authToken');
 
 const loadAllRentPost = () => {
-  fetch(`${BASE_URL}/advertisement/list/?owner_id=${userId}`)
+  fetch(`${BASE_URL}/advertisement/list/?owner_id=${userId}`,{
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Token ${token}`,
+    },
+  })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data)
       if (data.length === 0) {
-        document.getElementById('my_rent_post_table').innerHTML = 'my rent post    not found';
+        document.getElementById('my_rent_post_table').innerHTML = 'my rent post not found';
       } else {
         console.log(data)
         displayAllRentPost(data);

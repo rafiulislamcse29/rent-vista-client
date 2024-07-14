@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Rent</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet"
+    crossorigin="anonymous">
+
+  <link rel="shortcut icon" href="./Images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+
+  <header>
+    <!-- navbar start  -->
+    <div id="navbar"></div>
+
+
+  </header>
+
+  <main>
+    <section class="py-5">
+      <div class="container">
+        <h3 class="text-center">All Rent Advertisements</h3>
+        <table class="table table-bordered" id="all_rent_advertisements">
+          <thead>
+            <tr>
+              <th scope="col">SL</th>
+              <th scope="col">Name</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Title</th>
+              <th scope="col">Location</th>
+              <th scope="col">Rent</th>
+              <th scope="col">Approved</th>
+              <th scope="col">Bedrooms</th>
+              <th scope="col">Amenities</th>
+
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="table-body-all-rent">
+            <!-- show all  rent  -->
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="./js/auth.js"></script>
+  <script src="./js/navbar.js"></script>
+  <script>
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('authToken');
+
+    const loadAllRent = () => {
+      fetch(`https://rent-vista-7tlr.onrender.com/advertisement/list/`, {
+        headers: {
+          'content-type': 'application/json',
+          'Authorization': `Token ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.length === 0) {
+            document.getElementById('all_rent_advertisements').innerHTML = 'data not found';
+          } else {
+            displayAllRentList(data)
+          }
+        });
+    }
+    loadAllRent()
+
+    const displayAllRentList = (rentposts) => {
+
+      const tableBody = document.getElementById('table-body-all-rent');
+      tableBody.innerHTML = '';
+      rentposts.forEach((rentpost, i) => {
+ 
+        const tr = document.createElement('tr');
+        fetch(`https://rent-vista-7tlr.onrender.com/users/${rentpost.owner}/`)
+          .then(res => res.json())
+          .then(user => {
+            tr.innerHTML = `
+          <th scope="row">${i + 1}</th>
+          <td>${user.first_name} ${user.last_name}</td>
+          <td class='text-center '>${user.username}</td>
+           <td class=' '>${rentpost.title}</td>
+           <td class=' '>${rentpost.location}</td>
+           <td class=' '>${rentpost.price}</td>
+           <td class='text-center '>${rentpost.is_approved ? "Success" : 'Pending'}</td>
+          <td>${rentpost.bedrooms}</td>
+           <td>${rentpost.amenities}</td>
+          <td class='text-center h4'>
+           <a href="#">
+            <ion-icon onclick="handleRentApprove('${rentpost.id}','${rentpost.title}','${rentpost.description}','${rentpost.amenities}','${rentpost.location}','${rentpost.price}','${rentpost.bedrooms}','${rentpost.category}','${rentpost.image}','${rentpost.is_approved}','${rentpost.request_accepted}','${rentpost.owner}','${rentpost.created_at}')" name="close-circle-outline"></ion-icon>
+           </a>
+          </td>
+    `;
+            tableBody.insertAdjacentElement('afterbegin', tr);
+          })
+      });
+    }
+
+    const handleRentApprove = (id, title, description, amenities, location, price, bedrooms, category, image, is_approved, request_accepted, owner, created_at) => {
+
+      fetch(`https://rent-vista-7tlr.onrender.com/advertisement/list/${id}/`, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+          'Authorization': `Token ${token}`,
+        },
+        body: JSON.stringify({
+          is_approved: !is_approved,
+          title, description, amenities, location, price, bedrooms, category, image, request_accepted, owner, created_at
+        })
+      })
+        .then((res) => {
+
+          if (res.ok) {
+            loadAllRent();
+          } else {
+            console.error('Failed to update  On My Rent');
+          }
+          console.log(res.json())
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+     }
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
+    defer></script>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
