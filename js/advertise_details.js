@@ -55,14 +55,14 @@ const displayAdvertisementsDetails = (advertise) => {
       </div>
       <p>${advertise.description}</p>
       <div class='d-flex gap-2'>
-      <div>
-        <buttton onclick="handleRequestRent()" class='btn btn-outline-primary'> Request Rent</button>
+          <div>
+          ${advertise.request_accepted ? ` <buttton  class='btn btn-success'>Rent Booked Already</button>` : ` <buttton onclick="handleRequestRent()"  class='btn btn-outline-primary'>Rent Request</button>`
+        }
+          </div>
+          <div>
+          <buttton onclick="handleFavouriteRent()" class='btn btn-outline-primary'>Favourite Rent</button>
+         </div>
       </div>
-      <div>
-        <buttton onclick="handleFavouriteRent()" class='btn btn-outline-primary'>Favourite Rent</button>
-      </div>
-      </div>
-      
     </div>
     
     `
@@ -77,9 +77,8 @@ const loadReviews = () => {
   fetch(`${BASE_URL}/advertisement/reviews/?advertisement_id=${param}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       if (data.length == 0) {
-        document.getElementById('review_container').innerHTML = 'no review here'
+        document.getElementById('review-container').innerHTML = 'no reviews here'
       } else {
         displayAdvertiseReviews(data)
       }
@@ -114,15 +113,11 @@ const displayAdvertiseReviews = (reviews) => {
                             ${review.rating}
                            </p>
                      </div>
-               
        `
           parentEl.appendChild(article)
         }
-
       })
-
   });
-
 }
 
 loadReviews()

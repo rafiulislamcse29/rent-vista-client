@@ -1,11 +1,13 @@
+const userId = localStorage.getItem('userId')
+const token = localStorage.getItem('authToken')
 
 const getParams = () => {
   const param = new URLSearchParams(window.location.search).get("advertiseId");
   return param
 }
 
-const userId = localStorage.getItem('userId')
-const token = localStorage.getItem('authToken')
+
+
 
 const handleRequestRent = () => {
   const param = getParams()
@@ -15,26 +17,46 @@ const handleRequestRent = () => {
     return
   }
 
-  fetch(`https://rent-vista-7tlr.onrender.com/advertisement/rent_request/`, {
-    method: "POST",
-    headers: { 
-      "content-type": "application/json",
-      'Authorization':`Token ${token}`
-     },
-    body: JSON.stringify({
-      advertisement: param,
-      requester: userId
-    })
-  }).then(res => res.json())
-    .then(data =>{
-      if(data?.id){
-        window.location.href='my_requested_rent.html'
+  // check is already rent request 
+  fetch(`${BASE_URL}/advertisement/rent_request/?requester_id=${userId}`, {
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Token ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.length > 0) {
+
+        const isRequest = data.filter((req=>req.advertisement==getParams() && req.requester))
+    
+        if (isRequest.length==0) {
+          fetch(`https://rent-vista-7tlr.onrender.com/advertisement/rent_request/`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              'Authorization': `Token ${token}`
+            },
+            body: JSON.stringify({
+              advertisement: param,
+              requester: userId
+            })
+          }).then(res => res.json())
+            .then(data => {
+              if (data?.id) {
+                window.location.href = 'my_requested_rent.html'
+              }
+            })
+        } else {
+          alert("Already Send Rent Request")
+        }
       }
-    })
+    });
+
 }
 
 
-const handleFavouriteRent=()=>{
+const handleFavouriteRent = () => {
   const param = getParams()
 
   if (!userId && !token) {
@@ -43,18 +65,18 @@ const handleFavouriteRent=()=>{
   }
   fetch(`https://rent-vista-7tlr.onrender.com/advertisement/favourite/`, {
     method: "POST",
-    headers: { 
+    headers: {
       "content-type": "application/json",
-      'Authorization':`Token ${token}`
-     },
+      'Authorization': `Token ${token}`
+    },
     body: JSON.stringify({
       advertisement: param,
       user: userId
     })
   }).then(res => res.json())
     .then(data => {
-      if(data?.id){
-        window.location.href='favourite_rent.html'
+      if (data?.id) {
+        window.location.href = 'favourite_rent.html'
       }
     })
 }

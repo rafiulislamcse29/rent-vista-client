@@ -36,7 +36,7 @@ function displayRequestRent(rent_requests) {
           <td>${data.title}</td>
           <td class='text-center '>${data.location}</td>
            <td class='text-center '>${data.price}</td>
-           <td class='text-center '>${rent.is_accepted? "Success" :'Pending'}</td>
+           <td class='text-center '>${rent.is_accepted? `<span class='text-success'>Success</span>` : `<span class='text-danger'>Pending</span>` }</td>
           <td>${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}</td>
           <td class='text-center h4'>
            <a href="#">

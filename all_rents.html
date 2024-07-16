@@ -86,7 +86,7 @@
       const tableBody = document.getElementById('table-body-all-rent');
       tableBody.innerHTML = '';
       rentposts.forEach((rentpost, i) => {
- 
+
         const tr = document.createElement('tr');
         fetch(`https://rent-vista-7tlr.onrender.com/users/${rentpost.owner}/`)
           .then(res => res.json())
@@ -98,13 +98,15 @@
            <td class=' '>${rentpost.title}</td>
            <td class=' '>${rentpost.location}</td>
            <td class=' '>${rentpost.price}</td>
-           <td class='text-center '>${rentpost.is_approved ? "Success" : 'Pending'}</td>
+           <td class='text-center '>${rentpost.is_approved ? `<span class='text-success'>Success</span>` : `<span class='text-danger'>Pending</span>`}</td>
           <td>${rentpost.bedrooms}</td>
            <td>${rentpost.amenities}</td>
           <td class='text-center h4'>
-           <a href="#">
-            <ion-icon onclick="handleRentApprove('${rentpost.id}','${rentpost.title}','${rentpost.description}','${rentpost.amenities}','${rentpost.location}','${rentpost.price}','${rentpost.bedrooms}','${rentpost.category}','${rentpost.image}','${rentpost.is_approved}','${rentpost.request_accepted}','${rentpost.owner}','${rentpost.created_at}')" name="close-circle-outline"></ion-icon>
-           </a>
+              <form id="updateForm">
+                <button type="button" class='btn btn-primary' onclick="handleRentApprove('${rentpost.id}','${rentpost.is_approved}')"><ion-icon class='' name="create-outline"></ion-icon></button>
+            </form>
+
+         
           </td>
     `;
             tableBody.insertAdjacentElement('afterbegin', tr);
@@ -112,7 +114,8 @@
       });
     }
 
-    const handleRentApprove = (id, title, description, amenities, location, price, bedrooms, category, image, is_approved, request_accepted, owner, created_at) => {
+    const handleRentApprove = (id, is_approved) => {
+
 
       fetch(`https://rent-vista-7tlr.onrender.com/advertisement/list/${id}/`, {
         method: 'PUT',
@@ -121,23 +124,22 @@
           'Authorization': `Token ${token}`,
         },
         body: JSON.stringify({
-          is_approved: !is_approved,
-          title, description, amenities, location, price, bedrooms, category, image, request_accepted, owner, created_at
+          is_approved: is_approved,
         })
       })
         .then((res) => {
-
           if (res.ok) {
+
             loadAllRent();
           } else {
             console.error('Failed to update  On My Rent');
           }
-          console.log(res.json())
+
         })
         .catch((error) => {
           console.error('Error:', error);
         });
-     }
+    }
 
   </script>
 

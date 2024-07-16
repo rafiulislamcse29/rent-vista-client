@@ -37,10 +37,11 @@ function displayRequestOnMyRent(rent_requests) {
             tr.innerHTML = `
           <th scope="row">${i + 1}</th>
           <td class='text-center '>${user.first_name} ${user.last_name}</td>
+           <td class='text-center '>${user.username}</td>
           <td>${data.title}</td>
           <td class='text-center '>${data.location}</td>
            <td class='text-center '>${data.price}</td>
-           <td class='text-center '>${rent.is_accepted ? "Success" : 'Pending'}</td>
+           <td class='text-center '>${rent.is_accepted ? `<span class='text-success'>Success</span>` : `<span class='text-danger'>Pending</span>` }</td>
           <td>${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}</td>
           <td class='text-center h4 d-flex gap-1'>
            <a href="#">
@@ -87,31 +88,53 @@ window.handleRequestOnMyRentDel = (id) => {
 
 
 
-window.handleRequestOnMyRentEdit = (id, is_accepted, adcreated_at, advertisement, requester) => {
+window.handleRequestOnMyRentEdit = (id, is_accepted, created_at, advertisement, requester) => {
 
-  fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
-    method: 'PUT',
+  fetch(`${BASE_URL}/advertisement/rent_request/?advertisement_id=${advertisement}`, {
     headers: {
       'content-type': 'application/json',
       'Authorization': `Token ${token}`,
-    },
-    body: JSON.stringify({
-      is_accepted: !is_accepted,
-      adcreated_at,
-      advertisement,
-      requester
-    })
+    }
   })
-    .then((res) => {
-      if (res.ok) {
+    .then(res => res.json())
+    .then(data =>{
+    if(data.length>0){
+      const isAppectedAdvetisement=data.filter((reAdver=>reAdver.is_accepted==true))
+
+      if(isAppectedAdvetisement.length==0){
+        fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
+          method: 'PUT',
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': `Token ${token}`,
+          },
+          body: JSON.stringify({
+            is_accepted: !is_accepted,
+            created_at,
+            advertisement,
+            requester
+          })
+        })
+          .then((res) => {
+            if (res.ok) {
+              loadRequestOnMyRent();
+            } else {
+              console.error('Failed to update Request On My Rent');
+            }
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+
+      }else{
+        alert(`Rent Request already accepted!  `)
         loadRequestOnMyRent();
-      } else {
-        console.error('Failed to update Request On My Rent');
       }
+    }
     })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+
+
+
 };
 
 document.addEventListener('DOMContentLoaded', loadRequestOnMyRent);
