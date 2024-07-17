@@ -42,6 +42,9 @@ function displayRequestRent(rent_requests) {
            <a href="#">
             <ion-icon onclick="handleRequestRentDel('${rent.id}')" name="close-circle-outline"></ion-icon>
            </a>
+            <a href="advertise_details.html?advertiseId=${rent.advertisement}">
+           <ion-icon name="eye-outline"></ion-icon>
+           </a>
           </td>
     `;
 
