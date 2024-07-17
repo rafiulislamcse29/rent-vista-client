@@ -10,6 +10,7 @@ const getParams = () => {
 
 
 const handleRequestRent = () => {
+
   const param = getParams()
 
   if (!userId && !token) {
