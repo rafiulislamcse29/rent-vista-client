@@ -27,10 +27,8 @@ const handleRequestRent = () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      if (data.length > 0) {
+        const isRequest = data?.filter((req=>req.advertisement==getParams() && req.requester))
 
-        const isRequest = data.filter((req=>req.advertisement==getParams() && req.requester))
-    
         if (isRequest.length==0) {
           fetch(`https://rent-vista-7tlr.onrender.com/advertisement/rent_request/`, {
             method: "POST",
@@ -51,7 +49,6 @@ const handleRequestRent = () => {
         } else {
           alert("Already Send Rent Request")
         }
-      }
     });
 
 }
