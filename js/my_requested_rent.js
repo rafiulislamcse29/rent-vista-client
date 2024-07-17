@@ -38,12 +38,12 @@ function displayRequestRent(rent_requests) {
            <td class='text-center '>${data.price}</td>
            <td class='text-center '>${rent.is_accepted? `<span class='text-success'>Success</span>` : `<span class='text-danger'>Pending</span>` }</td>
           <td>${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}</td>
-          <td class='text-center h4'>
-           <a href="#">
-            <ion-icon onclick="handleRequestRentDel('${rent.id}')" name="close-circle-outline"></ion-icon>
-           </a>
+          <td class='text-center h4 d-flex gap-1'>
             <a href="advertise_details.html?advertiseId=${rent.advertisement}">
-           <ion-icon name="eye-outline"></ion-icon>
+           <ion-icon class='text-success' name="eye-outline"></ion-icon>
+            </a>
+           <a href="#">
+            <ion-icon class='text-danger' onclick="handleRequestRentDel('${rent.id}')"  name="close-circle-outline"></ion-icon>
            </a>
           </td>
     `;

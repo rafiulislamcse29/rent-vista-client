@@ -3,7 +3,7 @@ const userId = localStorage.getItem('userId');
 const token = localStorage.getItem('authToken');
 
 const loadAllRentPost = () => {
-  fetch(`${BASE_URL}/advertisement/list/?owner_id=${userId}`,{
+  fetch(`${BASE_URL}/advertisement/list/?owner_id=${userId}`, {
     headers: {
       'content-type': 'application/json',
       'Authorization': `Token ${token}`,
@@ -27,28 +27,33 @@ function displayAllRentPost(rentposts) {
   rentposts?.forEach((rentpost, i) => {
     // const date = new Date(rent.created_at);
     const tr = document.createElement('tr');
-        tr.innerHTML = `
+    tr.innerHTML = `
           <th scope="row">${i + 1}</th>
-          <td>${rentpost.title.slice(0,20)}..</td>
+          <td>${rentpost.title.slice(0, 20)}..</td>
           <td class='text-center '>${rentpost.location}</td>
            <td class='text-center '>${rentpost.price}</td>
-           <td class='text-center '>${rentpost.is_approved ? `<span class='text-success'>Success</span>` : `<span class='text-danger'>Pending</span>` }</td>
+           <td class='text-center '>${rentpost.is_approved ? `<span class='text-success'>Success</span>` : `<span class='text-danger'>Pending</span>`}</td>
             <td>${rentpost.bedrooms}</td>
           <td>${rentpost.amenities}</td>
-          <td class='text-center h4'>
+          <td class='text-center h4 d-flex gap-1 justify-content-center'>
+
+          ${rentpost.is_approved ? `<a href="advertise_details.html?advertiseId=${rentpost.id}">
+           <ion-icon class='text-success' name="eye-outline"></ion-icon>
+             </a>`: ``}
+          
            <a href="#">
-            <ion-icon onclick="handleRentPostDelete('${rentpost.id}')" name="close-circle-outline"></ion-icon>
+            <ion-icon class='text-danger' onclick="handleRentPostDelete('${rentpost.id}')" name="close-circle-outline"></ion-icon>
            </a>
           </td>
     `;
 
-        tableBody.insertAdjacentElement('beforeend', tr);
-  
+    tableBody.insertAdjacentElement('beforeend', tr);
+
   });
 }
 
 window.handleRentPostDelete = (id) => {
-  fetch(`${BASE_URL}/advertisement/list/${id}/`,{ 
+  fetch(`${BASE_URL}/advertisement/list/${id}/`, {
     method: 'DELETE',
     headers: {
       'content-type': 'application/json',

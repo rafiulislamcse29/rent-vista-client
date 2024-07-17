@@ -34,9 +34,12 @@ function displayFavoriteRent(favRents) {
           <th scope="row">${i + 1}</th>
           <td>${data.title}</td>
           <td>${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}</td>
-          <td class='text-center h4'>
+          <td class='text-center h4 d-flex gap-1'>
+           <a href="advertise_details.html?advertiseId=${fav.advertisement}">
+           <ion-icon class='text-success' name="eye-outline"></ion-icon>
+             </a>
            <a href="#">
-            <ion-icon onclick="handleFavouriteRentDel('${fav.id}')" name="close-circle-outline"></ion-icon>
+            <ion-icon class='text-danger' onclick="handleFavouriteRentDel('${fav.id}')" name="close-circle-outline"></ion-icon>
            </a>
           </td>
     `;
