@@ -30,7 +30,7 @@ const handleRequestRent = () => {
         const isRequest = data?.filter((req=>req.advertisement==getParams() && req.requester))
 
         if (isRequest.length==0) {
-          fetch(`https://rent-vista-7tlr.onrender.com/advertisement/rent_request/`, {
+          fetch(`${BASE_URL}/advertisement/rent_request/`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -61,7 +61,7 @@ const handleFavouriteRent = () => {
     window.location.href = 'login.html'
     return
   }
-  fetch(`https://rent-vista-7tlr.onrender.com/advertisement/favourite/`, {
+  fetch(`${BASE_URL}/advertisement/favourite/`, {
     method: "POST",
     headers: {
       "content-type": "application/json",

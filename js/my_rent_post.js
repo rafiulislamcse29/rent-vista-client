@@ -11,11 +11,10 @@ const loadAllRentPost = () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
       if (data.length === 0) {
         document.getElementById('my_rent_post_table').innerHTML = 'my rent post not found';
       } else {
-        console.log(data)
+
         displayAllRentPost(data);
       }
     });
@@ -25,7 +24,7 @@ function displayAllRentPost(rentposts) {
 
   const tableBody = document.getElementById('table-body');
   tableBody.innerHTML = '';
-  rentposts.forEach((rentpost, i) => {
+  rentposts?.forEach((rentpost, i) => {
     // const date = new Date(rent.created_at);
     const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -33,7 +32,7 @@ function displayAllRentPost(rentposts) {
           <td>${rentpost.title.slice(0,20)}..</td>
           <td class='text-center '>${rentpost.location}</td>
            <td class='text-center '>${rentpost.price}</td>
-           <td class='text-center '>${rentpost.is_approved? "Success" :'Pending'}</td>
+           <td class='text-center '>${rentpost.is_approved ? `<span class='text-success'>Success</span>` : `<span class='text-danger'>Pending</span>` }</td>
             <td>${rentpost.bedrooms}</td>
           <td>${rentpost.amenities}</td>
           <td class='text-center h4'>
@@ -49,7 +48,7 @@ function displayAllRentPost(rentposts) {
 }
 
 window.handleRentPostDelete = (id) => {
-  fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
+  fetch(`${BASE_URL}/advertisement/list/${id}/`,{ 
     method: 'DELETE',
     headers: {
       'content-type': 'application/json',
@@ -57,10 +56,11 @@ window.handleRentPostDelete = (id) => {
     },
   })
     .then((res) => {
+      loadAllRentPost();
       if (res.ok) {
-        loadRequestRent();
+        console.log(res.json())
       } else {
-        console.error('Failed to delete favourite rent');
+        console.error('Failed to delete  rent');
       }
     })
     .catch((error) => {

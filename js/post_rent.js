@@ -42,7 +42,7 @@ const handleRentPost = (event) => {
   //   amenities: formData.get('amenities'),
   //   owner:userId
   // }
-  fetch(`${BASE_URL}/advertisement/list/`,{
+  fetch(`${BASE_URL}/advertisement/list/`,{ 
     method:"POST",
     headers:{
       // "content-type":'application/json',
@@ -50,7 +50,13 @@ const handleRentPost = (event) => {
     },
     body:formData
   }).then(res=>res.json())
-  .then(data=>console.log(data))
+  .then(data=>{
+    if(data){
+      window.location.href='my_rent_post.html'
+    }else{
+      alert('post added not sccessful')
+    }
+  })
 }
 
 

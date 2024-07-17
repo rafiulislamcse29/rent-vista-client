@@ -10,7 +10,6 @@ fetch('navbar.html')
             fetch(`${BASE_URL}/users/${userId}/`)
                 .then(res => res.json())
                 .then(user => {
-              
                     if (user.role == 'admin' && token) {
                         navElement.innerHTML = `
                     <li class="menu">

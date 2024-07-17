@@ -6,8 +6,10 @@ const loadUserProfile = () => {
     .then(res => res.json())
     .then(data => {
       if (!data) {
+
         document.getElementById('profile_not_found').innerHTML = "Profile not found"
       } else {
+
         const parEl = document.getElementById('profile_data')
         parEl.innerHTML = `
       
