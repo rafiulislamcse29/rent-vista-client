@@ -10,7 +10,7 @@ fetch('navbar.html')
             fetch(`${BASE_URL}/users/${userId}/`)
                 .then(res => res.json())
                 .then(user => {
-                    if (user.role == 'admin' && token) {
+                    if (user.role == 'admin' && token ) {
                         navElement.innerHTML = `
                     <li class="menu">
                      <a class="text-decoration-none text-black" href="all_advertisement.html">Rent</a>
@@ -54,6 +54,15 @@ fetch('navbar.html')
                         navElement.innerHTML = `
                     <li class="menu">
                               <a class="text-decoration-none text-black" href="all_advertisement.html">Rent</a>
+                    </li>
+                      <li class="menu">
+                        <a class="text-decoration-none text-black" href="favourite_rent.html">Favourite Rent</a>
+                    </li>
+                    <li class="menu">
+                         <a class="text-decoration-none text-black" href="post_rent.html"> Post a Rent</a>
+                    </li>
+                    <li class="menu">
+                         <a class="text-decoration-none text-black" href="my_rent_post.html"> My Rent Post </a>
                     </li>
                     <li class="dropdown">
                           <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
