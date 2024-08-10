@@ -55,7 +55,9 @@ body{
   margin-bottom: 0.7rem !important;
 }
 
-
+.m-neg {
+  margin-top: -0.5rem !important;
+}
 
 .card-title{
   color: rgba(0, 126, 133, 1);
@@ -65,7 +67,7 @@ body{
   display: none;
 }
 
-.registration-container{
+.registration-container,.contact-container,.profile-container{
   width: 55%;
   margin:0 auto;
 }

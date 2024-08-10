@@ -4,19 +4,36 @@ const userId = localStorage.getItem('userId')
 const loadUserProfile = () => {
   fetch(`${BASE_URL}/users/${userId}/`)
     .then(res => res.json())
-    .then(data => {
-      if (!data) {
-
-        document.getElementById('profile_not_found').innerHTML = "Profile not found"
+    .then(user => {
+      if (!user) {
+     document.getElementById('profile_not_found').innerHTML = "Profile not found"
       } else {
 
-        const parEl = document.getElementById('profile_data')
+        const parEl = document.getElementById('user-profile-information')
         parEl.innerHTML = `
       
-      <h6 class="">:  ${data.username}</h6>
-      <h6 class="">:  ${data.first_name} ${data.last_name}</h6>
-       <h6 class="">:  ${data.email}</h6>
-      <h6 class="">:   ${data.role}</h6>
+       <div className="d-flex flex-column gap-2">
+                <div className="d-flex flex-column gap-1">
+                  <h6 class="fw-bold">User Name:</h6>
+                  <p class="text-white bg-info p-2 rounded m-neg">${user.username}</p>
+                </div>
+                <div className="d-flex flex-column gap-1">
+                  <h6 class="fw-bold">Full Name:</h6>
+                  <p class="text-white bg-info p-2 rounded m-neg">${user.first_name} ${user.last_name}</p>
+                </div>
+                <div className="d-flex flex-column">
+                  <h6 class="fw-bold">Eamil:</h6>
+                  <p class="text-white bg-info p-2 rounded m-neg">${user.email}</p>
+                </div>
+                <div className="d-flex flex-column">
+                  <h6 class="fw-bold">Role:</h6>
+                  <p class="text-white bg-info p-2 rounded m-neg">${user.role}</p>
+                </div>
+                <div class="d-flex justify-content-center gap-4">
+                  <button class="btn btn-primary">Edit Profile</button>
+                  <!-- <button class="btn btn-danger">Delete Account</button> -->
+                </div>
+              </div>
       `
       }
     })
