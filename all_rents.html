@@ -64,7 +64,7 @@
     const token = localStorage.getItem('authToken');
 
     const loadAllRent = () => {
-      fetch(`https://rent-vista-7tlr.onrender.com/advertisement/list/`, {
+      fetch(`http://127.0.0.1:8000/advertisement/list/`, {
         headers: {
           'content-type': 'application/json',
           'Authorization': `Token ${token}`,
@@ -88,7 +88,7 @@
       rentposts.forEach((rentpost, i) => {
 
         const tr = document.createElement('tr');
-        fetch(`https://rent-vista-7tlr.onrender.com/users/${rentpost.owner}/`)
+        fetch(`http://127.0.0.1:8000/users/${rentpost.owner}/`)
           .then(res => res.json())
           .then(user => {
             tr.innerHTML = `
@@ -117,7 +117,7 @@
     const handleRentApprove = (id, is_approved) => {
 
 
-      fetch(`https://rent-vista-7tlr.onrender.com/advertisement/list/${id}/`, {
+      fetch(`http://127.0.0.1:8000/advertisement/list/${id}/`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json',

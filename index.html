@@ -25,10 +25,10 @@
     <header>
         <!-- navbar start  -->
         <div id="navbar"></div>
-
+        <i class="fa-light fa-heart"></i>
         <!-- banner container -->
         <div class="banner">
-            <div class="container banner-container  shadow-lg rounded border p-5  ">
+            <div class="container banner-container  ">
                 <div class="row  align-items-center h-100">
                     <div class="col-md-8 d-flex flex-column gap-1">
                         <h1>Unlock Your Perfect Rental with RentVista</h1>
@@ -45,7 +45,6 @@
             </div>
         </div>
     </header>
-
     <main>
         <section class="py-5">
             <div class="container">
@@ -57,11 +56,10 @@
         </section>
 
         <!-- rent  sections -->
-        <section class="">
+        <section class="py-5">
             <div class="container">
-                <div class="row">
+                <div class="row g-5">
                     <div class="col-md-3">
-
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -73,37 +71,54 @@
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body" id="accordion-body-container">
-                                        
-                                    <!-- all categories -->
+
+                                        <!-- all categories -->
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                    <div class="col-md-9 d-flex flex-column gap-3 border p-2 rounded align-items-center">
-                        <div id="advertisements" class="advertisement d-flex gap-5 flex-wrap justify-content-center">
+                    <div
+                        class="col-md-9 d-flex flex-column gap-3 border p-4 rounded align-items-center justify-content-center">
+                        <div id="advertisements" class="advertisement d-flex gap-4 flex-wrap justify-content-center">
                             <!-- advertisements lists -->
                         </div>
                         <div id="nodata" class="nodata">
                             <h4>Result not found. Please try again</h4>
                         </div>
                         <div id="spinner" class="spinner hidden text-center">
-                            <img style="width: 150px; height: 150px;" src="./Images/loading.png" alt="">
+                            <img style="width: 100px; height: 100px;" src="./Images/loading.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
-
         <section class="py-5 ">
-            <div class="container text-center p-3 shadow-lg rounded border py-5 bg-info">
+            <div class="container text-center p-3 shadow-sm rounded border py-5 ">
                 <h2>Discover Your Ideal Flatmate Today!</h2>
                 <p>Join the Rent Vista community and start your search for the perfect flatmate. With our advanced <br>
                     matching algorithm, finding the ideal home has never been easier.</p>
-                <button onclick="handleGetStarted()" class="btn btn-outline-primary text-white">Get Started</button>
+                <button onclick="handleGetStarted()" class="btn btn-primary text-white">Get Started</button>
+            </div>
+        </section>
+
+
+        <!-- FAQ sections -->
+        <section class="py-5">
+            <div class="container d-flex flex-column gap-3">
+                <h2 clsass='mb-5'> Frequently Asked Questions (FAQs) - RentVista</h2>
+                <div class="row h-100">
+                    <div class="col-md-12">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <!-- Faq data -->
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-5 overflow-hidden bg-info">
+                        <img class="h-100 w-100 overflow-hidden" src="./Images/faq.png" alt="FAQ">
+                    </div> -->
+                </div>
             </div>
         </section>
     </main>
@@ -126,11 +141,11 @@
         const token = localStorage.getItem('authToken');
 
         const handleGetStarted = () => {
-                if(!userId && !token){
-                    window.location.href='login.html'
-                }else{
-                    window.location.href='all_advertisement.html'
-                }
+            if (!userId && !token) {
+                window.location.href = 'login.html'
+            } else {
+                window.location.href = 'all_advertisement.html'
+            }
         }
 
     </script>

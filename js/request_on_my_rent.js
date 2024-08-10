@@ -43,7 +43,7 @@ function displayRequestOnMyRent(rent_requests) {
            <td class='text-center '>${data.price}</td>
            <td class='text-center '>${rent.is_accepted ? `<span class='text-success'>Success</span>` : `<span class='text-danger'>Pending</span>`}</td>
           <td>${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}</td>
-          <td class='text-center h4 d-flex gap-1'>
+          <td class='text-center h4 d-flex gap-3'>
             <a href="advertise_details.html?advertiseId=${rent.advertisement}">
            <ion-icon class='text-success' name="eye-outline"></ion-icon>
              </a>

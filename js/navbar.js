@@ -13,7 +13,16 @@ fetch('navbar.html')
                     if (user.role == 'admin' && token) {
                         navElement.innerHTML = `
                     <li class="menu">
-                              <a class="text-decoration-none text-black" href="all_advertisement.html">rent</a>
+                     <a class="text-decoration-none text-black" href="all_advertisement.html">Rent</a>
+                    </li>
+                     <li class="menu">
+                        <a class="text-decoration-none text-black" href="favourite_rent.html">Favourite Rent</a>
+                    </li>
+                    <li class="menu">
+                         <a class="text-decoration-none text-black" href="post_rent.html"> Post a Rent</a>
+                    </li>
+                    <li class="menu">
+                         <a class="text-decoration-none text-black" href="my_rent_post.html"> My Rent Post </a>
                     </li>
                     <li class="dropdown">
                           <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
@@ -28,15 +37,7 @@ fetch('navbar.html')
                                 <li>
                                   <a class="dropdown-item" href="all_rents.html">All Rent </a>
                               </li>
-                              <li>
-                                  <a class="dropdown-item" href="favourite_rent.html">Favourite Rent</a>
-                              </li>
-                              <li>
-                                  <a class="dropdown-item" href="post_rent.html"> Post a Rent</a>
-                              </li>
-                              <li>
-                                  <a class="dropdown-item" href="my_rent_post.html"> My Rent Post </a>
-                              </li>
+                              
                               <li>
                                   <a class="dropdown-item" href="my_requested_rent.html">My Requested Rent</a>
                               </li>
@@ -52,7 +53,7 @@ fetch('navbar.html')
                     } else if (token) {
                         navElement.innerHTML = `
                     <li class="menu">
-                              <a class="text-decoration-none text-black" href="all_advertisement.html">rent</a>
+                              <a class="text-decoration-none text-black" href="all_advertisement.html">Rent</a>
                     </li>
                     <li class="dropdown">
                           <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
@@ -62,15 +63,6 @@ fetch('navbar.html')
                           <ul class="dropdown-menu dropdown-menu-white" aria-labelledby="dropdownMenuButton2">
                               <li>
                                   <a class="dropdown-item" href="user_profile.html">Profile</a>
-                              </li>
-                              <li>
-                                  <a class="dropdown-item" href="favourite_rent.html">Favourite Rent</a>
-                              </li>
-                              <li>
-                                  <a class="dropdown-item" href="post_rent.html"> Post a Rent</a>
-                              </li>
-                              <li>
-                                  <a class="dropdown-item" href="my_rent_post.html"> My Rent Post </a>
                               </li>
                               <li>
                                   <a class="dropdown-item" href="my_requested_rent.html">My Requested Rent</a>
@@ -87,8 +79,11 @@ fetch('navbar.html')
                     } else {
                         navElement.innerHTML = `
                     <li class="menu">
-                             <a class="text-decoration-none text-black" href="all_advertisement.html">rent</a>
-                         </li>
+                        <a class="text-decoration-none text-black" href="all_advertisement.html">Rent</a>
+                    </li>
+                    <li class=" bg-primary px-3 py-2 rounded-3">
+                     <a class="text-decoration-none text-white" href="registration.html">SignUp</a>
+                   </li>
                    <li class=" bg-primary px-3 py-2 rounded-3">
                      <a class="text-decoration-none text-white" href="login.html">Login</a>
                    </li>

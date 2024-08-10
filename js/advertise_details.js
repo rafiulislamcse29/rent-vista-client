@@ -40,29 +40,32 @@ const displayAdvertisementsDetails = (advertise) => {
     <div class="col-md-6 overflow-hidden ">
         <img class='h-100 w-100 object-fit-cover'  src='${advertise.image}' alt='${advertise.title}'>
     </div>
-    <div class="col-md-6">
-      <h2 class='text-info'>${advertise.title}</h2>
-      <div class='row'>
-        <div class='col-md-6'>
-          <p><span>Rent Category :</span>  <span class='text-info'>${category.name}</span></p> 
-          <p><span>Rent Amount :</span>  <span class='text-primary'>${advertise.price}৳</span></p>  
-          <p><span> Bedrooms:</span>  <span class='text-info'>${advertise.bedrooms}</span></p> 
-        </div>
-        <div class='col-md-6'>
-            <p><span> Location:</span>  <span class='text-info'>${advertise.location}</span></p> 
-            <p><span> Amenities:</span>  <span class='text-info'>${advertise.amenities}</span></p> 
-        </div>
-      </div>
-      <p>${advertise.description}</p>
-      <div class='d-flex gap-2'>
-          <div>
-          ${advertise.request_accepted ? ` <buttton  class='btn btn-success'>Rent Booked Already</button>` : ` <buttton onclick="handleRequestRent()"  class='btn btn-outline-primary'>Rent Request</button>`
-        }
+    <div class="col-md-6 d-flex flex-column justify-content-center gap-1">
+   
+        <h2 class='text-info'>  ${advertise.title}</h2>
+        <div class='row'>
+          <div class='col-md-6'>
+            <p><span>Rent Category :</span>  <span class='text-info '> ${category.name}</span></p> 
+            <p><span>Rent Amount :</span>  <span class='text-primary'>${advertise.price}৳</span></p>  
+            <p><span> Bedrooms:</span>  <span class='text-info'>${advertise.bedrooms}</span></p> 
           </div>
-          <div>
-          <buttton onclick="handleFavouriteRent()" class='btn btn-outline-primary'>Favourite Rent</button>
-         </div>
-      </div>
+          <div class='col-md-6'>
+              <p><span> Location:</span>  <span class='text-info'>${advertise.location}</span></p> 
+              <p><span> Amenities:</span>  <span class='text-info'>${advertise.amenities}</span></p> 
+          </div>
+        </div>
+        <p >${advertise.description}</p>
+        <div class='d-flex gap-2 '>
+            <div>
+            ${advertise.request_accepted ? ` <buttton  class='btn btn-success'>Rent Booked Already</button>` : ` <buttton onclick="handleRequestRent()"  class='btn btn-outline-primary'>Rent Request</button>`
+          }
+            </div>
+            <div>
+            <buttton onclick="handleFavouriteRent()" class='btn btn-outline-primary d-flex justify-content-center align-items-center gap-1'> 
+            <span>Favourite Rent</span>
+          <ion-icon name="heart-outline"></ion-icon></button>
+          </div>
+        </div>
     </div>
     
     `
@@ -89,30 +92,29 @@ const displayAdvertiseReviews = (reviews) => {
   reviews.forEach(review => {
     const parentEl = document.getElementById('reviews-cart-container')
     const article = document.createElement('article')
-    article.classList.add('box', 'mb-3', 'shadow-lg', 'p-2', 'border', 'border-secondary', 'rounded')
+    article.style.width='15rem'
+    article.classList.add('card','pt-3','p-2')
     const date = new Date(review.created_at);
-    console.log(date)
+
     // fetch user name
     fetch(`${BASE_URL}/users/${review.reviewer}/`)
       .then(res => res.json())
       .then(user => {
         if (user) {
           article.innerHTML = `
-          <div class="icontext w-100">
+          <div class="icontext w-100 d-flex gap-3"      style="width:15rem">
               <img src="./Images/user.png"   style="width: 50px; height: 50px; background-color: rgba(212, 210, 227, 1);"class="img-xs icon rounded-circle">
-                <div class="text">
-                  <span class="date text-muted float-md-right">${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}</span>
-                      <h6 class="mb-1">${user.first_name} ${user.last_name}</h6>
-                      </div>
-                           </div> 
-                     <div class="mt-2">
-                            <p>
-                            ${review.comment}
-                           </p>
-                           <p>
-                            ${review.rating}
-                           </p>
-                     </div>
+            <div class="text">
+              <h6 class="mb-1">${user.first_name} ${user.last_name}</h6>
+              <span class="date text-muted float-md-right">${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}</span>
+            </div>
+          </div> 
+          <p class='mt-2'>
+            ${review.rating}
+          </p>
+          <p>
+             ${review.comment}
+          </p>
        `
           parentEl.appendChild(article)
         }
@@ -136,6 +138,10 @@ reviewForm.addEventListener('submit', (event) => {
     window.location.href = 'login.html'
     return
   }
+
+
+
+
 
   const form = new FormData(reviewForm)
   const formData = {

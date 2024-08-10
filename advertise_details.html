@@ -27,42 +27,35 @@
         <div id="navbar"></div>
     </header>
 
-    <div id="spinner" class="spinner hidden text-center">
-        <img style="width: 150px; height: 150px;" src="./Images/loading.png" alt="">
-    </div>
 
     <main id="body">
-       
         <!-- advertisements  details sections -->
-        <section class="py-5 mt-5" >
-            <div class="container advertisements-container border overflow-hidden">
-                <div class="advertise-details" id="advertise-details">
+        <section class="py-5 mt-5 ">
+            <div class="container advertisements-container  overflow-hidden">
+                <div class="advertise-details card overflow-hidden" id="advertise-details">
                     <!-- advertisement details  -->
+                    <div id="spinner" class="spinner hidden text-center">
 
+                        <img style="width: 100px; height: 100px;" src="./Images/loading.png" alt="">
+                    </div>
                     <div id="nodata" class="nodata">
                         <img src="./Images/nodata.png" alt="nodata">
                     </div>
-                   
+
                 </div>
 
             </div>
             </div>
         </section>
 
-
-        <section>
-            <div class="row container">
-            </div>
-        </section>
-
         <!--post rent review -->
         <section class="py-5">
             <div class="container">
-                <h3 class="text-center">Please review</h3>
+                <h3 class="text-center">Please Review</h3>
                 <form id="review-form">
                     <div class="form-group">
                         <label for="comment">Comment</label>
-                        <textarea class="form-control" name="comment" id="comment" placeholder="enter your comment"
+                        <textarea class="form-control" name="comment" id="comment" placeholder="Enter your comment"
                             rows="3" required></textarea>
                     </div>
                     <div class="form-group">
@@ -81,19 +74,19 @@
         </section>
 
         <!--show all reviews -->
-        <section class="py-5 " >
+        <section class="py-5">
             <div class="container" id="review-container">
                 <div class="row">
                     <div class="col-md-12">
 
-                        <header class="section-heading">
+                        <header class="section-heading mb-3">
                             <h3>Users Reviews </h3>
                         </header>
-                        <div class="d-flex flex-column gap-2" id="reviews-cart-container">
-                           <!-- show review -->
-                        </div>      
-                    </div> 
-                </div> 
+                        <div class="d-flex flex-wrap gap-4" id="reviews-cart-container">
+                            <!-- show review -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
