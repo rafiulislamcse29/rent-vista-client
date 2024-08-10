@@ -24,6 +24,12 @@ fetch('navbar.html')
                     <li class="menu">
                          <a class="text-decoration-none text-black" href="my_rent_post.html"> My Rent Post </a>
                     </li>
+                     <li class="menu">
+                    <a class="text-decoration-none text-black" href="about-us.html">About Us</a>
+                    </li>
+                     <li class="menu">
+                    <a class="text-decoration-none text-black" href="contact-us.html">Contact Us</a>
+                    </li>
                     <li class="dropdown">
                           <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
                               data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,6 +70,12 @@ fetch('navbar.html')
                     <li class="menu">
                          <a class="text-decoration-none text-black" href="my_rent_post.html"> My Rent Post </a>
                     </li>
+                     <li class="menu">
+                    <a class="text-decoration-none text-black" href="about-us.html">About Us</a>
+                    </li>
+                     <li class="menu">
+                    <a class="text-decoration-none text-black" href="contact-us.html">Contact Us</a>
+                    </li>
                     <li class="dropdown">
                           <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
                               data-bs-toggle="dropdown" aria-expanded="false">
@@ -89,6 +101,12 @@ fetch('navbar.html')
                         navElement.innerHTML = `
                     <li class="menu">
                         <a class="text-decoration-none text-black" href="all_advertisement.html">Rent</a>
+                    </li>
+                     <li class="menu">
+                    <a class="text-decoration-none text-black" href="about-us.html">About Us</a>
+                    </li>
+                     <li class="menu">
+                    <a class="text-decoration-none text-black" href="contact-us.html">Contact Us</a>
                     </li>
                     <li class=" bg-primary px-3 py-2 rounded-3">
                      <a class="text-decoration-none text-white" href="registration.html">SignUp</a>
