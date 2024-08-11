@@ -20,12 +20,9 @@
 
 <body>
 
-
   <header>
     <!-- navbar start  -->
     <div id="navbar"></div>
-
-
   </header>
 
   <main>
@@ -60,11 +57,12 @@
   <script src="./js/auth.js"></script>
   <script src="./js/navbar.js"></script>
   <script>
+
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('authToken');
 
     const loadAllRent = () => {
-      fetch(`http://127.0.0.1:8000/advertisement/list/`, {
+      fetch(`https://rent-vista-7tlr.onrender.com/advertisement/list/`, {
         headers: {
           'content-type': 'application/json',
           'Authorization': `Token ${token}`,
@@ -88,7 +86,7 @@
       rentposts.forEach((rentpost, i) => {
 
         const tr = document.createElement('tr');
-        fetch(`http://127.0.0.1:8000/users/${rentpost.owner}/`)
+        fetch(`https://rent-vista-7tlr.onrender.com/users/${rentpost.owner}/`)
           .then(res => res.json())
           .then(user => {
             tr.innerHTML = `
@@ -116,8 +114,7 @@
 
     const handleRentApprove = (id, is_approved) => {
 
-
-      fetch(`http://127.0.0.1:8000/advertisement/list/${id}/`, {
+      fetch(`https://rent-vista-7tlr.onrender.com/advertisement/list/${id}/`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json',
@@ -134,13 +131,11 @@
           } else {
             console.error('Failed to update  On My Rent');
           }
-
         })
         .catch((error) => {
           console.error('Error:', error);
         });
     }
-
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
