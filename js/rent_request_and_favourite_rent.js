@@ -1,5 +1,7 @@
-const userId = localStorage.getItem('userId')
-const token = localStorage.getItem('authToken')
+const userId = localStorage.getItem('userId');
+const token = localStorage.getItem('authToken');
+
+
 
 const getParams = () => {
   const param = new URLSearchParams(window.location.search).get("advertiseId");

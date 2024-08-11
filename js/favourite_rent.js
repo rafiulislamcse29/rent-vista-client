@@ -3,6 +3,13 @@ import { BASE_URL } from './baseUrl.js';
 const userId = localStorage.getItem('userId');
 const token = localStorage.getItem('authToken');
 
+// checking auth
+if(!token && !userId){
+  location.href='login.html'
+  
+}
+
+
 const loadFavouriteRent = () => {
   fetch(`${BASE_URL}/advertisement/favourite/?user_id=${userId}`, {
     headers: {

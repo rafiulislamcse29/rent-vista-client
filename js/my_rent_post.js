@@ -1,6 +1,12 @@
 
-const userId = localStorage.getItem('userId');
-const token = localStorage.getItem('authToken');
+const token=localStorage.getItem('authToken')
+const userId=localStorage.getItem('userId')
+
+// checking auth
+if(!token && !userId){
+  location.href='login.html'
+  
+}
 
 const loadAllRentPost = () => {
   fetch(`${BASE_URL}/advertisement/list/?owner_id=${userId}`, {

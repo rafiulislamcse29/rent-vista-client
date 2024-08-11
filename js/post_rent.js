@@ -1,6 +1,11 @@
 
-const token=localStorage.getItem('authToken')
-const userId=localStorage.getItem('userId')
+const userId = localStorage.getItem('userId');
+const token = localStorage.getItem('authToken');
+
+// checking auth
+if(!token && !userId){
+  location.href='login.html'
+}
 
 const loadCategory = () => {
   fetch(`${BASE_URL}/category/list/`)
