@@ -80,9 +80,10 @@ const loadReviews = () => {
   fetch(`${BASE_URL}/advertisement/reviews/?advertisement_id=${param}`)
     .then(res => res.json())
     .then(data => {
-      if (data.length == 0) {
-        document.getElementById('review-container').innerHTML = 'no reviews here'
+      if (data?.length == 0) {
+        document.getElementById('reviews-section').style.display = 'none'
       } else {
+           document.getElementById('reviews-section').style.display = 'block'
         displayAdvertiseReviews(data)
       }
     })
@@ -102,7 +103,7 @@ const displayAdvertiseReviews = (reviews) => {
       .then(user => {
         if (user) {
           article.innerHTML = `
-          <div class="icontext w-100 d-flex gap-3"      style="width:15rem">
+          <div class="icontext w-100 d-flex gap-3"      style="width:14rem">
               <img src="./Images/user.png"   style="width: 50px; height: 50px; background-color: rgba(212, 210, 227, 1);"class="img-xs icon rounded-circle">
             <div class="text">
               <h6 class="mb-1">${user.first_name} ${user.last_name}</h6>
@@ -124,11 +125,17 @@ const displayAdvertiseReviews = (reviews) => {
 
 loadReviews()
 
-
-
-
 // add new reviews
 const reviewForm = document.getElementById('review-form')
+const reviewsSection=document.getElementById('review-section')
+document.getElementById("error").style.display = "none";
+
+if (!userId && !token) {
+  reviewsSection.style.display='none'
+}else{
+  reviewsSection.style.display='block'
+}
+
 
 reviewForm.addEventListener('submit', (event) => {
   event.preventDefault()
@@ -138,9 +145,6 @@ reviewForm.addEventListener('submit', (event) => {
     window.location.href = 'login.html'
     return
   }
-
-
-
 
 
   const form = new FormData(reviewForm)
@@ -159,8 +163,13 @@ reviewForm.addEventListener('submit', (event) => {
     body: JSON.stringify(formData)
   }).then(res => res.json())
     .then(data => {
-      if (data) {
+      
+      if (data?.id) {
         window.location.href = `advertise_details.html?advertiseId=${id}`
+      }
+      if(data?.detail){
+        document.getElementById("error").style.display = "inline-block";
+        document.getElementById("error").innerText =data.detail;
       }
     })
 })

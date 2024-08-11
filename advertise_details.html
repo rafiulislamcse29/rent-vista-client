@@ -49,10 +49,11 @@
         </section>
 
         <!--post rent review -->
-        <section class="py-5">
-            <div class="container">
+        <section class="py-5" id="review-section">
+            <div class="container" id="review-container">
                 <h3 class="text-center">Please Review</h3>
                 <form id="review-form">
+                    <span id="error" class="text-danger bg-info  rounded px-2"></span>
                     <div class="form-group">
                         <label for="comment">Comment</label>
                         <textarea class="form-control" name="comment" id="comment" placeholder="Enter your comment"
@@ -74,11 +75,10 @@
         </section>
 
         <!--show all reviews -->
-        <section class="py-5">
-            <div class="container" id="review-container">
+        <section class="py-5" id="reviews-section">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-
                         <header class="section-heading mb-3">
                             <h3>Users Reviews </h3>
                         </header>
