@@ -1,7 +1,6 @@
 const  BASE_URL='https://rent-vista-7tlr.onrender.com'
 // const  BASE_URL='http://127.0.0.1:8000'
 
-
 const handleRegistration = (event) => {
   event.preventDefault()
   const form = document.getElementById('registration-form')

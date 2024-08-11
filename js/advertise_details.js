@@ -130,11 +130,11 @@ const reviewForm = document.getElementById('review-form')
 const reviewsSection=document.getElementById('review-section')
 document.getElementById("error").style.display = "none";
 
-if (!userId && !token) {
-  reviewsSection.style.display='none'
-}else{
-  reviewsSection.style.display='block'
-}
+// if (!userId && !token) {
+//   reviewsSection.style.display='none'
+// }else{
+//   reviewsSection.style.display='block'
+// }
 
 
 reviewForm.addEventListener('submit', (event) => {
