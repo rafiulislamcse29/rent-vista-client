@@ -28,6 +28,7 @@
 
 body{       
    font-family: "Open Sans", sans-serif;
+   overflow-x: hidden;
 }
 .nav-container {
   width: 95%;
@@ -53,13 +54,13 @@ body{
   width: 100%;
 }
 
-.banner{
+/* .banner{
   padding: 5rem 5rem;
-}
+} */
 
-.banner-container{
+/* .banner-container{
   height: 45vh;
-}
+} */
 
 /* filter rent category  */
 .dropdown-item:hover{
@@ -101,4 +102,11 @@ body{
   color: #ffff;
 }
 
+
+/* reponsive advertisement borde4r */
+@media (min-width: 768px) { 
+  .border-md {
+    border: 1px solid #dee2e6; 
+  }
+}
 

@@ -26,20 +26,19 @@ export function displayAdvertisements(advertisements) {
   advertisements.forEach((advertise) => {
     const advertisements = document.getElementById('advertisements')
     const div = document.createElement('div')
-
+    div.classList.add( 'col-md-6', 'col-lg-4','mb-4')
     fetch(`${BASE_URL}/category/list/${advertise.category}/`)
       .then(res => res.json())
       .then(category => {
-
         div.innerHTML = `
-    <div class="card" style="width:18.899rem;">
-       <a href="advertise_details.html?advertiseId=${advertise.id}">
+      <div class="card" >
+      <a href="advertise_details.html?advertiseId=${advertise.id}">
          <img class="card-img-top" style="height: 12rem;" src="${advertise.image}" alt="${advertise.title}">
        </a>
        <div class="card-body">
-         <h5 class="card-title mb-2">${advertise.title.slice(0, 30)}...</h5>
+         <h5 class="card-title mb-2">${advertise.title.slice(0, 35)}...</h5>
          <span class="card-text bg-info p-1  rounded">${category.name}</span>
-         <p class="card-text text-justify mt-2">${advertise.description.slice(0, 40)}...</p>
+         <p class="card-text text-justify mt-2">${advertise.description.slice(0, 50)}...</p>
          <div class='d-flex justify-content-between '>
           <span class=''>${advertise.bedrooms} Bedrooms</span>
           <span class='text-primary'> ${advertise.price}৳</span>
@@ -48,8 +47,8 @@ export function displayAdvertisements(advertisements) {
            <a href="advertise_details.html?advertiseId=${advertise.id}" class="mt-1 w-full btn btn-primary">view</a>
          </div>
        </div>
-        
      </div>
+  
    `
         advertisements.appendChild(div)
       })
@@ -68,9 +67,8 @@ export const loadCategory = () => {
         const li = document.createElement('li')
         li.style.cursor = 'pointer';
         li.classList.add('category_item', 'rounded', 'p-1')
-        // li.style.backgroundColor='';
-        li.textContent = item.name;
 
+        li.textContent = item.name;
         li.addEventListener('click', () => loadAdvertisements(item.name));
 
         parentEl.appendChild(li)
@@ -188,4 +186,60 @@ const loadFAQData = (FAQDLists) => {
 loadFAQData(FAQDLists)
 
 
+
+const discoverData=[
+  {
+      "id": 1,
+      "title": "Find Your Ideal Flatmate Today!"
+  },
+  {
+      "id": 2,
+      "title": "Explore Your Perfect Home and Roommate"
+  },
+  {
+      "id": 3,
+      "title": "Discover Your Next Home and Ideal Flatmate"
+  },
+  {
+      "id": 4,
+      "title": "Find the Perfect Flatmate and Home for Your Lifestyle"
+  },
+  {
+      "id": 5,
+      "title": "Explore Top-Rated Flatmates and Rentals"
+  },
+  {
+      "id": 6,
+      "title": "Your Ideal Flatmate Awaits – Start Discovering!"
+  },
+  {
+      "id": 7,
+      "title": "Connect with Perfect Roommates and Rentals"
+  },
+  {
+      "id": 8,
+      "title": "Discover Your Perfect Living Arrangement Today"
+  }
+]
+
+
+function loadDiscoverData(discoverData){
+  const discoverListsEL=document.getElementById('discover-lists')
+
+  if(discoverData.length===0){
+    discoverListsEL.innerHTML='No data found'
+  }else{
+    discoverData?.forEach((item)=>{
+      let li = document.createElement('li')
+      li.classList.add('d-flex','gap-2')
+      li.innerHTML=`
+      <span class='fw-bold'>${item.id}.</span>
+      <span>${item.title}</span>
+      `
+      discoverListsEL.appendChild(li)
+    })
+  }
+
+}
+loadDiscoverData(discoverData)
 

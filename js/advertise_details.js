@@ -103,14 +103,14 @@ const displayAdvertiseReviews = (reviews) => {
                 <article class="card p-3 h-100">
                     <div class="icontext d-flex gap-3 align-items-center">
                         <img src="./Images/user.png" class="img-xs icon rounded-circle" style="width: 75px; height: 75px;">
-                        <h6 class="text-uppercase fw-bold">rafiul islam</h6>
+                        <h6 class="text-uppercase fw-bold">${user.first_name} ${user.last_name}</h6>
                     </div>
                     <p class="mt-3">
-                        A review gives an opinion about anything from a restaurant to a concert. The most common types of review are film and book reviews.
+                      ${review.comment}
                     </p>
                     <p class="d-flex align-items-center justify-content-between">
-                        ⭐⭐⭐⭐⭐
-                        <span class="date text-muted">10/8/2024</span>
+                          ${review.rating}
+                          <span class="date text-muted float-md-right">${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}</span>
                     </p>
                 </article>
        `
