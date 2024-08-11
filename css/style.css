@@ -10,6 +10,22 @@
   outline: none;
 }
 
+
+/* custom scrool bar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(55, 56, 61);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color:#0d6efd;
+  height: 10%;
+  border-radius: 10px;
+}
+
 body{       
    font-family: "Open Sans", sans-serif;
 }
