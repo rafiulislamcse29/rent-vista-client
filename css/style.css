@@ -69,8 +69,15 @@ body{
 
 .category_item{
   margin-bottom: 0.5rem !important;
+  background-color: #3d8bfd;
+  color: white;
+  transition: 0.5s ease-in-out;
 }
 
+.category_item:hover{
+  background-color: #6ea8fe;
+  color: rgb(83, 81, 81);
+}
 .m-neg {
   margin-top: -0.5rem !important;
 }
@@ -88,18 +95,10 @@ body{
   margin:0 auto;
 }
 
-
-/* .reviews-heading  h3{
-  font-size: 2.5rem;
-color: rgba(0, 126, 133, 1);
-} */
-
-
-/* footer{
-  background: linear-gradient(rgb(28, 45, 199),
-  rgb(25, 35, 170),
-  rgb(61, 50, 158));
-} */
-
+/* error  */
+#error{
+  background-color: #dc3545;
+  color: #ffff;
+}
 
 

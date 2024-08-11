@@ -67,7 +67,7 @@ export const loadCategory = () => {
         const parentEl = document.getElementById('accordion-body-container')
         const li = document.createElement('li')
         li.style.cursor = 'pointer';
-        li.classList.add('bg-info', 'category_item', 'rounded', 'p-1')
+        li.classList.add('category_item', 'rounded', 'p-1')
         // li.style.backgroundColor='';
         li.textContent = item.name;
 

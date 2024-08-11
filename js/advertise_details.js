@@ -32,42 +32,41 @@ const displayAdvertisementsDetails = (advertise) => {
 
   const parentEl = document.getElementById('advertise-details')
   const div = document.createElement('div')
-  div.classList.add('row')
+  div.classList.add('row','g-0','g-lg-5')
   fetch(`${BASE_URL}/category/list/${advertise.category}/`)
     .then(res => res.json())
     .then(category => {
       div.innerHTML = `
-    <div class="col-md-6 overflow-hidden ">
-        <img class='h-100 w-100 object-fit-cover'  src='${advertise.image}' alt='${advertise.title}'>
-    </div>
-    <div class="col-md-6 d-flex flex-column justify-content-center gap-1">
-   
-        <h2 class='text-info'>  ${advertise.title}</h2>
-        <div class='row'>
-          <div class='col-md-6'>
-            <p><span>Rent Category :</span>  <span class='text-info '> ${category.name}</span></p> 
-            <p><span>Rent Amount :</span>  <span class='text-primary'>${advertise.price}৳</span></p>  
-            <p><span> Bedrooms:</span>  <span class='text-info'>${advertise.bedrooms}</span></p> 
-          </div>
-          <div class='col-md-6'>
-              <p><span> Location:</span>  <span class='text-info'>${advertise.location}</span></p> 
-              <p><span> Amenities:</span>  <span class='text-info'>${advertise.amenities}</span></p> 
-          </div>
-        </div>
-        <p >${advertise.description}</p>
-        <div class='d-flex gap-2 '>
-            <div>
-            ${advertise.request_accepted ? ` <buttton  class='btn btn-success'>Rent Booked Already</button>` : ` <buttton onclick="handleRequestRent()"  class='btn btn-outline-primary'>Rent Request</button>`
-          }
-            </div>
-            <div>
-            <buttton onclick="handleFavouriteRent()" class='btn btn-outline-primary d-flex justify-content-center align-items-center gap-1'> 
-            <span>Favourite Rent</span>
-          <ion-icon name="heart-outline"></ion-icon></button>
-          </div>
-        </div>
-    </div>
-    
+                       <div class="col-md-6 overflow-hidden ">
+                            <img class='h-100 w-100 object-fit-cover' src='${advertise.image}' alt='${advertise.title}'>
+                        </div>
+                        <div class="col-md-6 d-flex flex-column justify-content-center p-3 p-lg-0">
+                            <h2 class="text-info">${advertise.title}</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><span>Rent Category:</span> <span class="text-info">${category.name}</span></p>
+                                    <p><span>Rent Amount:</span> <span class="text-primary">${advertise.price}৳</span></p>
+                                    <p><span>Bedrooms:</span> <span class="text-info">${advertise.bedrooms}</span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><span>Location:</span> <span class="text-info">${advertise.location}</span></p>
+                                    <p><span>Amenities:</span> <span class="text-info">${advertise.amenities}</span></p>
+                                </div>
+                            </div>
+                            <p>${advertise.description}</p>
+                            <div class="d-flex gap-2">
+                                <div>
+                                    ${advertise.request_accepted ? ` <buttton  class='btn btn-success'>Rent Booked Already</button>` : ` <buttton onclick="handleRequestRent()"  class='btn btn-outline-primary'>Rent Request</button>`
+                                    }
+                                </div>
+                                 <div>
+                              <buttton onclick="handleFavouriteRent()" class='btn btn-outline-primary d-flex justify-content-center align-items-center gap-1'> 
+                              <span>Favourite Rent</span>
+                            <ion-icon name="heart-outline"></ion-icon></button>
+                            </div>
+                            </div>
+                        </div>
+
     `
       parentEl.appendChild(div)
     })
@@ -83,7 +82,7 @@ const loadReviews = () => {
       if (data?.length == 0) {
         document.getElementById('reviews-section').style.display = 'none'
       } else {
-           document.getElementById('reviews-section').style.display = 'block'
+        document.getElementById('reviews-section').style.display = 'block'
         displayAdvertiseReviews(data)
       }
     })
@@ -92,32 +91,30 @@ const loadReviews = () => {
 const displayAdvertiseReviews = (reviews) => {
   reviews.forEach(review => {
     const parentEl = document.getElementById('reviews-cart-container')
-    const article = document.createElement('article')
-    article.style.width='15rem'
-    article.classList.add('card','pt-3','p-2')
+    const div = document.createElement('div')
+    div.classList.add('col-md-6', 'col-lg-3', 'col-md-4', 'mb-4')
     const date = new Date(review.created_at);
-
     // fetch user name
     fetch(`${BASE_URL}/users/${review.reviewer}/`)
       .then(res => res.json())
       .then(user => {
         if (user) {
-          article.innerHTML = `
-          <div class="icontext w-100 d-flex gap-3"      style="width:14rem">
-              <img src="./Images/user.png"   style="width: 50px; height: 50px; background-color: rgba(212, 210, 227, 1);"class="img-xs icon rounded-circle">
-            <div class="text">
-              <h6 class="mb-1">${user.first_name} ${user.last_name}</h6>
-              <span class="date text-muted float-md-right">${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}</span>
-            </div>
-          </div> 
-          <p class='mt-2'>
-            ${review.rating}
-          </p>
-          <p>
-             ${review.comment}
-          </p>
+          div.innerHTML = `
+                <article class="card p-3 h-100">
+                    <div class="icontext d-flex gap-3 align-items-center">
+                        <img src="./Images/user.png" class="img-xs icon rounded-circle" style="width: 75px; height: 75px;">
+                        <h6 class="text-uppercase fw-bold">rafiul islam</h6>
+                    </div>
+                    <p class="mt-3">
+                        A review gives an opinion about anything from a restaurant to a concert. The most common types of review are film and book reviews.
+                    </p>
+                    <p class="d-flex align-items-center justify-content-between">
+                        ⭐⭐⭐⭐⭐
+                        <span class="date text-muted">10/8/2024</span>
+                    </p>
+                </article>
        `
-          parentEl.appendChild(article)
+          parentEl.appendChild(div)
         }
       })
   });
@@ -127,7 +124,7 @@ loadReviews()
 
 // add new reviews
 const reviewForm = document.getElementById('review-form')
-const reviewsSection=document.getElementById('review-section')
+const reviewsSection = document.getElementById('review-section')
 document.getElementById("error").style.display = "none";
 
 // if (!userId && !token) {
@@ -163,13 +160,13 @@ reviewForm.addEventListener('submit', (event) => {
     body: JSON.stringify(formData)
   }).then(res => res.json())
     .then(data => {
-      
+
       if (data?.id) {
         window.location.href = `advertise_details.html?advertiseId=${id}`
       }
-      if(data?.detail){
+      if (data?.detail) {
         document.getElementById("error").style.display = "inline-block";
-        document.getElementById("error").innerText =data.detail;
+        document.getElementById("error").innerText = data.detail;
       }
     })
 })

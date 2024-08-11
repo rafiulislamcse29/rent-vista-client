@@ -28,28 +28,29 @@
 
     <main id="body">
         <!-- advertisements  details sections -->
-        <section class="py-5 mt-5 ">
-            <div class="container advertisements-container  overflow-hidden">
+        <section class="py-5 mt-5">
+            <div class="container advertisements-container overflow-hidden">
                 <div class="advertise-details card overflow-hidden" id="advertise-details">
-                    <!-- advertisement details  -->
-                    <div id="spinner" class="spinner hidden text-center">
-
-                        <img style="width: 100px; height: 100px;" src="./Images/loading.png" alt="">
+                    <!-- Spinner and No Data Images -->
+                    <div id="spinner" class="spinner hidden text-center" >
+                        <img src="./Images/loading.png" alt="" style="width: 100px; height: 100px;">
                     </div>
-                    <div id="nodata" class="nodata">
+                    <div id="nodata" class="nodata" >
                         <img src="./Images/nodata.png" alt="nodata">
                     </div>
+                    <!-- Advertisement Details -->
+                 
                 </div>
             </div>
-            </div>
         </section>
+        
 
-        <!--post rent review -->
+        <!-- rent review -->
         <section class="py-5" id="review-section">
             <div class="container" id="review-container">
                 <h3 class="text-center">Please Review</h3>
                 <form id="review-form">
-                    <span id="error" class="text-danger bg-info  rounded px-2"></span>
+                    <span id="error" class="rounded p-1 mb-2"></span>
                     <div class="form-group">
                         <label for="comment">Comment</label>
                         <textarea class="form-control" name="comment" id="comment" placeholder="Enter your comment"
@@ -70,22 +71,22 @@
             </div>
         </section>
 
+
+
+
         <!--show all reviews -->
-        <section class="py-5" id="reviews-section">
+        <section class="py-5" id="reviews-section" style="display: block;">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <header class="section-heading mb-3">
-                            <h3>Users Reviews </h3>
-                        </header>
-                        <div class="d-flex flex-wrap gap-4" id="reviews-cart-container">
-                            <!-- show review -->
-                        </div>
-                    </div>
+                <header class="section-heading mb-4">
+                    <h3>Users Reviews </h3>
+                </header>
+                <div class="row" id="reviews-cart-container">
+                    <!-- Review Card -->
                 </div>
             </div>
         </section>
     </main>
+
 
     <!-- footer -->
     <div id="footer"></div>
@@ -104,8 +105,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
         defer></script>
-        
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
