@@ -4,8 +4,8 @@ const userId = localStorage.getItem('userId');
 const token = localStorage.getItem('authToken');
 
 // checking auth
-if(!token && !userId){
-  location.href='login.html'
+if (!token && !userId) {
+  location.href = 'login.html'
 }
 
 const loadRequestOnMyRent = () => {
@@ -18,7 +18,9 @@ const loadRequestOnMyRent = () => {
     .then((res) => res.json())
     .then((data) => {
       if (data.length === 0) {
-        document.getElementById('rent_request_table').innerHTML = 'Request On My Rent  not found';
+        document.getElementById('rent_request_table').innerHTML = `
+        <h6 class='text-center mt-4'>Request On My Rent  not found</h6>
+        `;
       } else {
         displayRequestOnMyRent(data);
       }
@@ -84,7 +86,7 @@ function displayRequestOnMyRent(rent_requests) {
 window.handleRequestOnMyRentDel = (id, is_accepted, created_at, advertisement, requester) => {
 
   // update advertisement is_request first false then delete request advertisement
-  if (is_accepted=='true') {
+  if (is_accepted == 'true') {
 
     fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
       method: 'PUT',
@@ -119,7 +121,7 @@ window.handleRequestOnMyRentDel = (id, is_accepted, created_at, advertisement, r
             .catch((error) => {
               console.error('Error:', error);
             });
-        
+
         } else {
           console.error('Failed to update Request On My Rent');
         }

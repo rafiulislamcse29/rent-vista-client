@@ -21,6 +21,7 @@ export const loadAdvertisements = (search) => {
     })
 }
 
+
 export function displayAdvertisements(advertisements) {
 
   advertisements.forEach((advertise) => {
@@ -38,9 +39,9 @@ export function displayAdvertisements(advertisements) {
         </div>
        </a>
        <div class="card-body">
-         <h5 class="card-title mb-2">${advertise.title.slice(0, 35)}...</h5>
+         <h5 class="card-title mb-2">${advertise.title.slice(0, 33)}...</h5>
          <span class="card-text bg-info p-1  rounded">${category.name}</span>
-         <p class="card-text text-justify mt-2">${advertise.description.slice(0, 50)}...</p>
+         <p class="card-text rent-description text-justify mt-2">${advertise.description.slice(0,40)}...</p>
          <div class='d-flex justify-content-between '>
           <span class=''>${advertise.bedrooms} Bedrooms</span>
           <span class='text-primary'> ${advertise.price}৳</span>
@@ -68,7 +69,7 @@ export const loadCategory = () => {
         const parentEl = document.getElementById('accordion-body-container')
         const li = document.createElement('li')
         li.style.cursor = 'pointer';
-        li.classList.add('category_item','link-secondary', 'rounded', 'p-1')
+        li.classList.add('category_item','link-secondary', 'rounded', 'px-2','py-1')
 
         li.textContent = item.name;
         li.addEventListener('click', () => loadAdvertisements(item.name));

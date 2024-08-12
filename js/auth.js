@@ -99,6 +99,10 @@ function handlelogOut() {
       localStorage.removeItem('authToken');
       localStorage.removeItem('userId');
       window.location.href = 'index.html';
+    }{
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('userId');
+      window.location.href = 'index.html';
     }
   }).catch(error => {
     localStorage.removeItem('authToken');

@@ -19,7 +19,13 @@ const loadRequestRent = () => {
     .then((res) => res.json())
     .then((data) => {
       if (data.length === 0) {
-        document.getElementById('rent_request_table').innerHTML = 'rent request  not found';
+        document.getElementById('rent_request_table').innerHTML =  `
+        <div class='text-center'>
+              <a href="all_advertisement.html">
+                <img class="h-25 w-25" src="./Images/request-rent.jpg" alt="">
+              </a>
+              </div>
+        `;
       } else {
         displayRequestRent(data);
       }

@@ -4,11 +4,10 @@ const userId = localStorage.getItem('userId');
 const token = localStorage.getItem('authToken');
 
 // checking auth
-if(!token && !userId){
-  location.href='login.html'
-  
-}
+if (!token && !userId) {
+  location.href = 'login.html'
 
+}
 
 const loadFavouriteRent = () => {
   fetch(`${BASE_URL}/advertisement/favourite/?user_id=${userId}`, {
@@ -19,9 +18,16 @@ const loadFavouriteRent = () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
       if (data.length === 0) {
-        document.getElementById('favourite_rent_table').innerHTML = 'Favourite rent not found';
+        document.getElementById('favourite_rent_table').innerHTML = ` 
+            <div class="text-center">
+             <div>
+              <img class="w-25 h-25 block" src='./Images/not_favouite.png' alt='not favourite image' />
+             </div>
+               <a href='all_advertisement.html' class='text-decoration-none btn btn-primary'>Please Continue</a>
+            </div>
+
+        `
       } else {
         displayFavoriteRent(data);
       }

@@ -7,7 +7,7 @@ fetch('navbar.html')
         const token = localStorage.getItem('authToken')
         const userId = localStorage.getItem('userId')
         const loadUser = () => {
-            fetch(`${BASE_URL}/users/${userId}/`)
+            fetch(`https://rent-vista-7tlr.onrender.com/users/${userId}/`)
                 .then(res => res.json())
                 .then(user => {
                     if (user.role == 'admin' && token) {
@@ -32,12 +32,12 @@ fetch('navbar.html')
                        <a class="text-decoration-none text-black" href="contact-us.html">Contact Us</a>
                 </li>
                 <!-- dropdown -->
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown border  rounded link-primary">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Dashboard
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu ">
                        
                               <li>
                                   <a class="dropdown-item" href="user_profile.html">Profile</a>
@@ -61,7 +61,7 @@ fetch('navbar.html')
             </ul>
 
             `
-                    } else if (token) {
+            } else if (token) {
                         navElement.innerHTML = `
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item nav-menu-item">
@@ -83,12 +83,12 @@ fetch('navbar.html')
                        <a class="text-decoration-none text-black" href="contact-us.html">Contact Us</a>
                 </li>
                 <!-- dropdown -->
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown  border  rounded link-primary">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Dashboard
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu ">
                         <li>
                             <a class="dropdown-item" href="user_profile.html">Profile</a>   
                         </li>                    

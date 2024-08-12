@@ -13,7 +13,7 @@
 
 /* custom scrool bar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -22,7 +22,7 @@
 
 ::-webkit-scrollbar-thumb {
   background-color:#0d6efd;
-  height: 10%;
+  height: 8%;
   border-radius: 10px;
 }
 
@@ -35,6 +35,16 @@ body{
   margin:  0 auto;
 
 } */
+
+.hero-padding{
+  padding-top: 7rem;
+}
+
+.main-padding{
+  padding-top: 5rem;
+}
+
+
 
 .navbar-nav{
   display: flex !important;
@@ -62,14 +72,6 @@ body{
   width: 100%;
 }
 
-/* .banner{
-  padding: 5rem 5rem;
-} */
-
-/* .banner-container{
-  height: 45vh;
-} */
-
 /* filter rent category  */
 .dropdown-item:hover{
   cursor: pointer;
@@ -77,27 +79,34 @@ body{
 }
 
 .category_item{
-  margin-bottom: 0.4rem !important;
+  margin-bottom: 0.5rem !important;
+  background-color: #e9ecef;
   transition: 0.5s ease-in-out;
 }
 
 .category_item:hover{
-  background-color: #e9ecef;
-  color: rgb(83, 81, 81);
+  background-color: #ecf0f0;
+  color: rgb(63, 62, 62);
 }
+
 .m-neg {
   margin-top: -0.5rem !important;
 }
 
 .card-title{
   color: rgba(0, 126, 133, 1);
+  height: 3rem;
+  overflow: hidden;
 }
-
+.rent-description{
+  height: 2.8rem;
+  overflow: hidden;
+}
 .nodata{
   display: none;
 }
 
-.registration-container,.contact-container,.profile-container{
+.registration-container,.login-container ,.contact-container,.profile-container,.rent-post-container,.contact-container{
   width: 55%;
   margin:0 auto;
 }
@@ -132,8 +141,16 @@ body{
     justify-content: start;
     gap: 0.5rem; 
   }
-  .profile-container{
+  .registration-container,.login-container,.profile-container,.rent-post-container,.contact-container{
     width: 100%;
-    margin:0 auto;
+    margin: 0 auto;
+  }
+
+  .card-title{
+    color: rgba(0, 126, 133, 1);
+    height: 1.5rem;
+  }
+  .rent-description{
+  height: 1.5rem;
   }
 }
