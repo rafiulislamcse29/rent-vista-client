@@ -21,36 +21,34 @@
   </header>
 
   <section class="py-5">
-    <div class=" profile-container pt-5" id="profile_not_found">
-      <div class="row">
-        <div class="col-md-4 justify-content-start">
-          <h3 class="mb-3 ml-3 fw-bold">My Profile</h3>
-          <div class="d-flex flex-column gap-2">
-            <li class="bg-info p-2 rounded "><a href="user_profile.html" class="text-decoration-none text-white">
-                Personal Information
-              </a></li>
-            <li class="bg-info p-2 rounded "><a href="#" class="text-decoration-none text-white">Change password</a>
-            </li>
-          </div>
-        </div>
-        <div class="col-md-8 border-start">
-          <div class="d-flex justify-content-center flex-column gap-3">
-            <div class="text-center user">
-              <h3 class="mb-3 fw-bold">Perosnal Information</h3>
-            <div>
-              <img class="h-25 w-25 rounded-circle overflow-hidden border p-2 border-1 border-info"
-              src="./Images/user.png" alt="user pic">
+    <div class="container-sm pt-5 profile-container" id="profile_not_found">
+      <div class="row g-4">
+        <!-- Left Sidebar: Profile Options -->
+        <div class="col-md-4">
+          <div class="card py-3 shadow">
+            <div class="row">
+              <h3 class="fw-bold text-center ">My Profile</h3>
             </div>
+            <hr>
+            <div class="row px-3">
+              <a href="user_profile.html" class="text-decoration-none text-black link-secondary">Personal Information</a>
             </div>
-            <div class="user-profile-information p-3" id="user-profile-information">
-              <!-- user profile information -->
+            <hr>
+            <div class="row px-3">
+              <a href="#" class="text-decoration-none text-black link-secondary">Change Password</a>
             </div>
           </div>
         </div>
-        <div>
+        <!-- Right Section: User Profile Information -->
+        <div class="col-md-8">
+          <div class="card shadow  d-flex flex-column gap-3 " id="user-profile-information">
+        
+          </div>
         </div>
       </div>
+    </div>
   </section>
+
 
   <script src="./js/navbar.js"></script>
   <script src="./js/auth.js"></script>

@@ -31,9 +31,11 @@ export function displayAdvertisements(advertisements) {
       .then(res => res.json())
       .then(category => {
         div.innerHTML = `
-      <div class="card" >
-      <a href="advertise_details.html?advertiseId=${advertise.id}">
-         <img class="card-img-top" style="height: 12rem;" src="${advertise.image}" alt="${advertise.title}">
+      <div class="card overflow-hidden" >
+      <a href="advertise_details.html?advertiseId=${advertise.id}" >
+        <div class='overflow-hidden' style="height: 12rem;">
+          <img class="card-img-top hover-scale w-100 h-100 " src="${advertise.image}" alt="${advertise.title}">
+        </div>
        </a>
        <div class="card-body">
          <h5 class="card-title mb-2">${advertise.title.slice(0, 35)}...</h5>
@@ -66,7 +68,7 @@ export const loadCategory = () => {
         const parentEl = document.getElementById('accordion-body-container')
         const li = document.createElement('li')
         li.style.cursor = 'pointer';
-        li.classList.add('category_item', 'rounded', 'p-1')
+        li.classList.add('category_item','link-secondary', 'rounded', 'p-1')
 
         li.textContent = item.name;
         li.addEventListener('click', () => loadAdvertisements(item.name));

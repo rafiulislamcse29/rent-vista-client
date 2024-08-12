@@ -19,6 +19,7 @@ const loadFavouriteRent = () => {
   })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data)
       if (data.length === 0) {
         document.getElementById('favourite_rent_table').innerHTML = 'Favourite rent not found';
       } else {
@@ -30,7 +31,7 @@ const loadFavouriteRent = () => {
 function displayFavoriteRent(favRents) {
   const tableBody = document.getElementById('table-body');
   tableBody.innerHTML = '';
-  favRents.forEach((fav, i) => {
+  favRents?.forEach((fav, i) => {
     const date = new Date(fav.created_at);
     const tr = document.createElement('tr');
     let title = {}

@@ -1,7 +1,10 @@
 const BASE_URL = 'https://rent-vista-7tlr.onrender.com'
 // const  BASE_URL='http://127.0.0.1:8000'
 
+document.getElementById("error").style.display='none'
+
 const handleRegistration = (event) => {
+  document.getElementById("error").style.display='inline-block'
   event.preventDefault()
   const form = document.getElementById('registration-form')
   const formData = new FormData(form)
@@ -30,7 +33,7 @@ const handleRegistration = (event) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.username)
+          console.log(data)
           if (data?.error) {
             document.getElementById("error").innerText = data.error;
           } else if (data?.username) {
@@ -53,8 +56,6 @@ const handleRegistration = (event) => {
 }
 
 
-let errorMessage = document.getElementById("error")
-errorMessage.style.display = "none";
 
 const handleLogin = (event) => {
   event.preventDefault()
@@ -73,8 +74,8 @@ const handleLogin = (event) => {
     .then((res) => res.json())
     .then((data) => {
       if (data?.error) {
-        errorMessage.style.display = "inline-block";
-        errorMessage.innerText = data.error
+        document.getElementById("error").style.display = "inline-block";
+        document.getElementById("error").innerText = data.error
       } else {
         localStorage.setItem("authToken", data.token)
         localStorage.setItem('userId', data.user_id)
@@ -85,7 +86,7 @@ const handleLogin = (event) => {
 }
 
 
-const handlelogOut = () => {
+function handlelogOut() {
   const token = localStorage.getItem('authToken')
   fetch(`${BASE_URL}/api/auth/logout/`, {
     headers: {
@@ -93,7 +94,7 @@ const handlelogOut = () => {
       'Authorization': `Token ${token}`
     },
   }).then(res => {
-    console.log(res); // Log the entire response object
+    console.log(res); 
     if (res.ok) {
       localStorage.removeItem('authToken');
       localStorage.removeItem('userId');
@@ -104,6 +105,5 @@ const handlelogOut = () => {
     localStorage.removeItem('userId');
     window.location.href = 'index.html';
     console.log("Logout Error", error)
-  }
-  );
+  });
 }
