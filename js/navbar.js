@@ -32,7 +32,7 @@ fetch('navbar.html')
                        <a class="text-decoration-none text-black" href="contact-us.html">Contact Us</a>
                 </li>
                 <!-- dropdown -->
-                <li class="nav-item dropdown border  rounded link-primary">
+                <li class="nav-item dropdown border  rounded px-2">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Dashboard
@@ -83,7 +83,7 @@ fetch('navbar.html')
                        <a class="text-decoration-none text-black" href="contact-us.html">Contact Us</a>
                 </li>
                 <!-- dropdown -->
-                <li class="nav-item dropdown  border  rounded link-primary">
+                <li class="nav-item dropdown  border  rounded px-2">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Dashboard
