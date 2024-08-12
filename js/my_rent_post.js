@@ -18,7 +18,12 @@ const loadAllRentPost = () => {
     .then((res) => res.json())
     .then((data) => {
       if (data.length === 0) {
-        document.getElementById('my_rent_post_table').innerHTML = 'my rent post not found';
+        document.getElementById('my_rent_post_table').innerHTML = `
+          <div class='text-center mt-2'>
+            <p class='h3 fw-blod'>Not Found</p>   
+             <a href='post_rent.html' class='text-decoration-none btn btn-primary'>Please Post Rent</a> 
+          </div>
+        `
       } else {
 
         displayAllRentPost(data);
