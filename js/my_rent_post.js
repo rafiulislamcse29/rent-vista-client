@@ -20,7 +20,9 @@ const loadAllRentPost = () => {
       if (data.length === 0) {
         document.getElementById('my_rent_post_table').innerHTML = `
           <div class='text-center mt-2'>
-            <p class='h3 fw-blod'>Not Found</p>   
+           <div class="overflow-hidden text-center" id="nodata">
+                            <img class="h-25 w-25 object-fit-cover" style='width:100px;height:100px' src="./Images/no-data-found.jpg" alt="not data found image">
+                        </div>  
              <a href='post_rent.html' class='text-decoration-none btn btn-primary'>Please Post Rent</a> 
           </div>
         `

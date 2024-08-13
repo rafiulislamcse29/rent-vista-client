@@ -14,8 +14,8 @@ export const loadAdvertisements = (search) => {
         displayAdvertisements(data)
       } else {
         document.getElementById('advertisements').innerHTML = "";
-        document.getElementById("spinner").style.display = "none";
         document.getElementById("nodata").style.display = "block";
+        document.getElementById("spinner").style.display = "none";
       }
 
     })

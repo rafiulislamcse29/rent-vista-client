@@ -19,7 +19,9 @@ const loadRequestOnMyRent = () => {
     .then((data) => {
       if (data.length === 0) {
         document.getElementById('rent_request_table').innerHTML = `
-        <h6 class='text-center mt-4'>Request On My Rent  not found</h6>
+          <div class="overflow-hidden text-center mt-4" id="nodata">
+               <img class="h-25 w-25 object-fit-cover" style='width:150px;height:140px' src="./Images/no-data-found.jpg" alt="not data found image">
+          </div>
         `;
       } else {
         displayRequestOnMyRent(data);

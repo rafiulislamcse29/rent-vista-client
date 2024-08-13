@@ -73,7 +73,11 @@
         .then((res) => res.json())
         .then((data) => {
           if (data.length === 0) {
-            document.getElementById('all_rent_advertisements').innerHTML = 'data not found';
+            document.getElementById('all_rent_advertisements').innerHTML = `
+             <div class="overflow-hidden text-center mt-4" id="nodata">
+               <img class="h-25 w-25 object-fit-cover" style='width:150px;height:140px' src="./Images/no-data-found.jpg" alt="not data found image">
+          </div>
+            `;
           } else {
             displayAllRentList(data)
           }
