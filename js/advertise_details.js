@@ -42,7 +42,7 @@ const displayAdvertisementsDetails = (advertise) => {
     </div>
     <div class="col-md-6 p-3 d-flex flex-column justify-content-center gap-2">
       <div class='p-lg-3 p-0'>
-       <h3 class="text-info">${advertise.title}</h3>
+       <h2 class="text-info">${advertise.title}</h2>
         <div class="row">
             <div class="col-md-6">
                 <p><span>Rent Category:</span> <span class="text-info">${category.name}</span></p>
