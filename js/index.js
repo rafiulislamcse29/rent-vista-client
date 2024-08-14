@@ -16,7 +16,7 @@ export const loadAdvertisements = (search) => {
         document.getElementById('advertisements').innerHTML = "";
         document.getElementById("spinner").style.display = "none";
         document.getElementById("nodata").style.display = "block";
-        
+
       }
 
     })
@@ -28,11 +28,13 @@ export function displayAdvertisements(advertisements) {
   advertisements.forEach((advertise) => {
     const advertisements = document.getElementById('advertisements')
     const div = document.createElement('div')
-    div.classList.add( 'col-md-6', 'col-lg-4','mb-4')
+    div.classList.add('col-md-6', 'col-lg-4', 'mb-4')
     fetch(`${BASE_URL}/category/list/${advertise.category}/`)
       .then(res => res.json())
       .then(category => {
         div.innerHTML = `
+
+        
       <div class="card overflow-hidden" >
       <a href="advertise_details.html?advertiseId=${advertise.id}" >
         <div class='overflow-hidden' style="height: 12rem;">
@@ -40,12 +42,12 @@ export function displayAdvertisements(advertisements) {
         </div>
        </a>
        <div class="card-body">
-         <h5 class="card-title mb-2">${advertise.title.slice(0, 33)}...</h5>
-         <span class="card-text bg-info p-1  rounded">${category.name}</span>
-         <p class="card-text rent-description text-justify mt-2">${advertise.description.slice(0,40)}...</p>
-         <div class='d-flex justify-content-between '>
-          <span class=''>${advertise.bedrooms} Bedrooms</span>
-          <span class='text-primary'> ${advertise.price}৳</span>
+         <h5 class="card-title text-uppercase text-secondary mb-2">${advertise.title.slice(0, 33)}...</h5>
+         <span class="card-text text-uppercase p-1 category-name text-black  rounded">${category.name}</span>
+         <p class="card-text  text-muted  rent-description text-justify mt-2">${advertise.description.slice(0, 40)}...</p>
+         <div class='d-flex justify-content-between'>
+          <span class=''><strong>${advertise.bedrooms}</strong> Bedrooms</span>
+          <span class='text-dark'><strong>${advertise.price}</strong>৳</span>
          </div>
          <div class='d-flex flex-column'>
            <a href="advertise_details.html?advertiseId=${advertise.id}" class="mt-1 w-full btn btn-primary">view</a>
@@ -70,7 +72,7 @@ export const loadCategory = () => {
         const parentEl = document.getElementById('accordion-body-container')
         const li = document.createElement('li')
         li.style.cursor = 'pointer';
-        li.classList.add('category_item','link-secondary', 'rounded', 'px-2','py-1')
+        li.classList.add('category_item', 'link-secondary', 'rounded', 'px-2', 'py-1')
 
         li.textContent = item.name;
         li.addEventListener('click', () => loadAdvertisements(item.name));
@@ -127,47 +129,47 @@ const FAQDLists = [
 function test(n) {
   if (n < 0)
     return false;
- let single_digit = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
- let double_digit = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen']
- let below_hundred = ['Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety']
-if (n === 0) return 'Zero'
-function translate(n) {
- let  word = ""
-  if (n < 10) {
-    word = single_digit[n] + ' '
+  let single_digit = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+  let double_digit = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen']
+  let below_hundred = ['Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety']
+  if (n === 0) return 'Zero'
+  function translate(n) {
+    let word = ""
+    if (n < 10) {
+      word = single_digit[n] + ' '
+    }
+    else if (n < 20) {
+      word = double_digit[n - 10] + ' '
+    }
+    else if (n < 100) {
+      rem = translate(n % 10)
+      word = below_hundred[(n - n % 10) / 10 - 2] + ' ' + rem
+    }
+    else if (n < 1000) {
+      word = single_digit[Math.trunc(n / 100)] + ' Hundred ' + translate(n % 100)
+    }
+    else if (n < 1000000) {
+      word = translate(parseInt(n / 1000)).trim() + ' Thousand ' + translate(n % 1000)
+    }
+    else if (n < 1000000000) {
+      word = translate(parseInt(n / 1000000)).trim() + ' Million ' + translate(n % 1000000)
+    }
+    else {
+      word = translate(parseInt(n / 1000000000)).trim() + ' Billion ' + translate(n % 1000000000)
+    }
+    return word
   }
-  else if (n < 20) {
-    word = double_digit[n - 10] + ' '
-  }
-  else if (n < 100) {
-    rem = translate(n % 10)
-    word = below_hundred[(n - n % 10) / 10 - 2] + ' ' + rem
-  }
-  else if (n < 1000) {
-    word = single_digit[Math.trunc(n / 100)] + ' Hundred ' + translate(n % 100)
-  }
-  else if (n < 1000000) {
-    word = translate(parseInt(n / 1000)).trim() + ' Thousand ' + translate(n % 1000)
-  }
-  else if (n < 1000000000) {
-    word = translate(parseInt(n / 1000000)).trim() + ' Million ' + translate(n % 1000000)
-  }
-  else {
-    word = translate(parseInt(n / 1000000000)).trim() + ' Billion ' + translate(n % 1000000000)
-  }
-  return word
-}
- let result = translate(n) 
-return result.trim()
+  let result = translate(n)
+  return result.trim()
 }
 
 const loadFAQData = (FAQDLists) => {
   const accordionFlushExample = document.getElementById('accordionFlushExample')
   FAQDLists.forEach((FAQDList) => {
- 
+
     const div = document.createElement('div')
     div.classList.add('accordion-item')
-    const option=test(FAQDList.id)
+    const option = test(FAQDList.id)
     div.innerHTML = `
         <h2 class="accordion-header" id=flush-heading${option}">
              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -191,52 +193,52 @@ loadFAQData(FAQDLists)
 
 
 
-const discoverData=[
+const discoverData = [
   {
-      "id": 1,
-      "title": "Find Your Ideal Flatmate Today!"
+    "id": 1,
+    "title": "Find Your Ideal Flatmate Today!"
   },
   {
-      "id": 2,
-      "title": "Explore Your Perfect Home and Roommate"
+    "id": 2,
+    "title": "Explore Your Perfect Home and Roommate"
   },
   {
-      "id": 3,
-      "title": "Discover Your Next Home and Ideal Flatmate"
+    "id": 3,
+    "title": "Discover Your Next Home and Ideal Flatmate"
   },
   {
-      "id": 4,
-      "title": "Find the Perfect Flatmate and Home for Your Lifestyle"
+    "id": 4,
+    "title": "Find the Perfect Flatmate and Home for Your Lifestyle"
   },
   {
-      "id": 5,
-      "title": "Explore Top-Rated Flatmates and Rentals"
+    "id": 5,
+    "title": "Explore Top-Rated Flatmates and Rentals"
   },
   {
-      "id": 6,
-      "title": "Your Ideal Flatmate Awaits – Start Discovering!"
+    "id": 6,
+    "title": "Your Ideal Flatmate Awaits – Start Discovering!"
   },
   {
-      "id": 7,
-      "title": "Connect with Perfect Roommates and Rentals"
+    "id": 7,
+    "title": "Connect with Perfect Roommates and Rentals"
   },
   {
-      "id": 8,
-      "title": "Discover Your Perfect Living Arrangement Today"
+    "id": 8,
+    "title": "Discover Your Perfect Living Arrangement Today"
   }
 ]
 
 
-function loadDiscoverData(discoverData){
-  const discoverListsEL=document.getElementById('discover-lists')
+function loadDiscoverData(discoverData) {
+  const discoverListsEL = document.getElementById('discover-lists')
 
-  if(discoverData.length===0){
-    discoverListsEL.innerHTML='No data found'
-  }else{
-    discoverData?.forEach((item)=>{
+  if (discoverData.length === 0) {
+    discoverListsEL.innerHTML = 'No data found'
+  } else {
+    discoverData?.forEach((item) => {
       let li = document.createElement('li')
-      li.classList.add('d-flex','gap-2')
-      li.innerHTML=`
+      li.classList.add('d-flex', 'gap-2')
+      li.innerHTML = `
       <span class='fw-bold'>${item.id}.</span>
       <span>${item.title}</span>
       `

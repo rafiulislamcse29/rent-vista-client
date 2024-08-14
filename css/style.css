@@ -78,6 +78,10 @@ body,html{
   background: #3333;
 }
 
+.category-name{
+  background-color: #d3d7db;
+  transition: 0.5s ease-in-out;
+}
 .category_item{
   margin-bottom: 0.5rem !important;
   background-color: #e9ecef;
