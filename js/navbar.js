@@ -37,10 +37,12 @@ fetch('navbar.html')
                         aria-expanded="false">
                         Dashboard
                     </a>
-                    <ul class="dropdown-menu ">
-                       
+                    <ul class="dropdown-menu">
                               <li>
                                   <a class="dropdown-item" href="user_profile.html">Profile</a>
+                              </li>
+                              <li>
+                                  <a class="dropdown-item" href="deposit_balance.html">Deposit Balance</a>
                                   
                               </li>
                                 <li>
@@ -91,7 +93,11 @@ fetch('navbar.html')
                     <ul class="dropdown-menu ">
                         <li>
                             <a class="dropdown-item" href="user_profile.html">Profile</a>   
-                        </li>                    
+                        </li> 
+                         <li>
+                            <a class="dropdown-item" href="deposit_balance.html">Deposit Balance</a>
+                                  
+                        </li>                   
                         <li>
                             <a class="dropdown-item" href="my_requested_rent.html">My Requested Rent</a>
                         </li>
