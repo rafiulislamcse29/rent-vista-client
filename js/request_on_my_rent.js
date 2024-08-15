@@ -175,7 +175,16 @@ window.handleRequestOnMyRentDel = (id) => {
 
 window.handleRequestOnMyRentEdit = (id, is_accepted, created_at, advertisement, requester) => {
   console.log('click')
-  
+  // fetch(`${BASE_URL}/advertisement/rent_request/?advertisement_id=${advertisement}`, {
+  //   headers: {
+  //     'content-type': 'application/json',
+  //     'Authorization': `Token ${token}`,
+  //   }
+  // })
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     const isAppectedAdvetisement = data?.filter((reAdver => reAdver.is_accepted == true))
+  //     if (isAppectedAdvetisement.length == 0) {
         fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
           method: 'PUT',
           headers: {
@@ -202,6 +211,12 @@ window.handleRequestOnMyRentEdit = (id, is_accepted, created_at, advertisement, 
           .catch((error) => {
             console.error('Error:', error);
           });
+
+      // } else {
+      //   alert(`Rent Request already accepted!  `)
+      //   loadRequestOnMyRent();
+      // }
+    // })
 };
 
 document.addEventListener('DOMContentLoaded', loadRequestOnMyRent);
