@@ -14,7 +14,7 @@ const loadUserProfile = () => {
       if (!user) {
         document.getElementById('profile_not_found').innerHTML = "Profile not found"
       } else {
-        fetch(`${BASE_URL}/user-bank-accounts/?user_id=2`)
+        fetch(`${BASE_URL}/user-bank-accounts/?user_id=${userId}`)
         .then(res => res.json())
         .then(account=>{
           const parEl = document.getElementById('user-profile-information')

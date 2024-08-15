@@ -46,10 +46,10 @@ const handleRequestRent = () => {
           .then(data => {
             console.log(data)
             if (data?.id) {
-              // window.location.href = 'my_requested_rent.html'
+              window.location.href = 'my_requested_rent.html'
             }
             if(data?.error){
-              alert(`${data.error}!. Please deposit account balance`)
+              alert(`${data.error}!.Please deposit account balance`)
             }
           })
       } else {
