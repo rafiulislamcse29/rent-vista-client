@@ -22,7 +22,7 @@ const loadFavouriteRent = () => {
         document.getElementById('favourite_rent_table').innerHTML = ` 
             <div class="text-center">
              <div>
-              <img class="w-25 h-25 block" src='./Images/not_favouite.png' alt='not favourite image' />
+              <img class="h-25 w-25 object-fit-cover" style='width:120px;height:120px' src='./Images/not_favouite.png' alt='not favourite image' />
              </div>
                <a href='all_advertisement.html' class='text-decoration-none btn btn-primary'>Please Continue</a>
             </div>
