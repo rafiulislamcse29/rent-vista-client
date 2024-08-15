@@ -68,11 +68,7 @@ function displayRequestOnMyRent(rent_requests) {
            </a>
 
            <a href="#">
-            <ion-icon class='text-danger' onclick="handleRequestOnMyRentDel( '${rent.id}', 
-          '${rent.is_accepted}', 
-          '${rent.created_at}', 
-          '${rent.advertisement}', 
-          '${rent.requester}')" name="close-circle-outline"></ion-icon>
+            <ion-icon class='text-danger' onclick="handleRequestOnMyRentDel( '${rent.id}')" name="close-circle-outline"></ion-icon>
            </a>
 
           </td>
@@ -85,89 +81,101 @@ function displayRequestOnMyRent(rent_requests) {
   });
 }
 
-window.handleRequestOnMyRentDel = (id, is_accepted, created_at, advertisement, requester) => {
+window.handleRequestOnMyRentDel = (id) => {
+
 
   // update advertisement is_request first false then delete request advertisement
-  if (is_accepted == 'true') {
 
-    fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `Token ${token}`,
-      },
-      body: JSON.stringify({
-        is_accepted: true,
-        created_at,
-        advertisement,
-        requester
-      })
+  fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Token ${token}`,
+    },
+  })
+    .then((res) => {
+      console(res.json())
+      if (res.ok) {
+        // loadRequestOnMyRent();
+      } else {
+        console.error('Failed to delete Request On My Rent');
+      }
     })
-      .then((res) => {
-        if (res.ok) {
-          // delete rent quest form owner
-          fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
-            method: 'DELETE',
-            headers: {
-              'content-type': 'application/json',
-              'Authorization': `Token ${token}`,
-            },
-          })
-            .then((res) => {
-              if (res.ok) {
-                loadRequestOnMyRent();
-              } else {
-                console.error('Failed to delete Request On My Rent');
-              }
-            })
-            .catch((error) => {
-              console.error('Error:', error);
-            });
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 
-        } else {
-          console.error('Failed to update Request On My Rent');
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  } else {
+  // if (is_accepted == 'true') {
 
-    // delete rent quest form owner
-    fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `Token ${token}`,
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          loadRequestOnMyRent();
-        } else {
-          console.error('Failed to delete Request On My Rent');
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }
+  //   fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //       'Authorization': `Token ${token}`,
+  //     },
+  //     body: JSON.stringify({
+  //       is_accepted: true,
+  //       created_at,
+  //       advertisement,
+  //       requester
+  //     })
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         // delete rent quest form owner
+  //         fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
+  //           method: 'DELETE',
+  //           headers: {
+  //             'content-type': 'application/json',
+  //             'Authorization': `Token ${token}`,
+  //           },
+  //         })
+  //           .then((res) => {
+  //             if (res.ok) {
+  //               loadRequestOnMyRent();
+  //             } else {
+  //               console.error('Failed to delete Request On My Rent');
+  //             }
+  //           })
+  //           .catch((error) => {
+  //             console.error('Error:', error);
+  //           });
+
+  //       } else {
+  //         console.error('Failed to update Request On My Rent');
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error:', error);
+  //     });
+  // } else {
+
+  //   // delete rent quest form owner
+  //   fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //       'Authorization': `Token ${token}`,
+  //     },
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         loadRequestOnMyRent();
+  //       } else {
+  //         console.error('Failed to delete Request On My Rent');
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error:', error);
+  //     });
+  // }
 };
 
 
 
 window.handleRequestOnMyRentEdit = (id, is_accepted, created_at, advertisement, requester) => {
-
-  fetch(`${BASE_URL}/advertisement/rent_request/?advertisement_id=${advertisement}`, {
-    headers: {
-      'content-type': 'application/json',
-      'Authorization': `Token ${token}`,
-    }
-  })
-    .then(res => res.json())
-    .then(data => {
-      const isAppectedAdvetisement = data?.filter((reAdver => reAdver.is_accepted == true))
-      if (isAppectedAdvetisement.length == 0) {
+  console.log('click')
+  
         fetch(`${BASE_URL}/advertisement/rent_request/${id}/`, {
           method: 'PUT',
           headers: {
@@ -181,22 +189,19 @@ window.handleRequestOnMyRentEdit = (id, is_accepted, created_at, advertisement, 
             requester
           })
         })
-          .then((res) => {
-            if (res.ok) {
-              loadRequestOnMyRent();
-            } else {
-              console.error('Failed to update Request On My Rent');
+          .then((res) => res.json())
+          .then(data=>{
+            {
+              if (data) {
+                loadRequestOnMyRent();
+              } else {
+                console.error('Failed to update Request On My Rent');
+              }
             }
           })
           .catch((error) => {
             console.error('Error:', error);
           });
-
-      } else {
-        alert(`Rent Request already accepted!  `)
-        loadRequestOnMyRent();
-      }
-    })
 };
 
 document.addEventListener('DOMContentLoaded', loadRequestOnMyRent);
