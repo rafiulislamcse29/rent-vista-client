@@ -50,6 +50,7 @@ const handleRequestRent = () => {
             }
             if(data?.error){
               alert(`${data.error}!.Please deposit account balance`)
+               window.location.href = 'deposit_balance.html'
             }
           })
       } else {
