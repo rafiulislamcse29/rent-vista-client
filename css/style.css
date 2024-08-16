@@ -110,7 +110,7 @@ body,html{
   display: none;
 }
 
-.registration-container,.login-container ,.contact-container,.profile-container,.rent-post-container,.contact-container,.deposit-container{
+.registration-container,.login-container ,.contact-container,.profile-container,.rent-post-container,.contact-container,.deposit-container,.deposit-form{
   width: 55%;
   margin:0 auto;
 }
@@ -145,7 +145,7 @@ body,html{
     justify-content: start;
     gap: 0.5rem; 
   }
-  .registration-container,.login-container,.profile-container,.rent-post-container,.contact-container,.deposit-container{
+  .registration-container,.login-container,.profile-container,.rent-post-container,.contact-container,.deposit-container,.deposit-form{
     width: 100%;
     margin: 0 auto;
   }
